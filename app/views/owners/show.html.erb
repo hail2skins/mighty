@@ -1,0 +1,59 @@
+<%= provide(:title, "#{@owner.name} Profile Page") %>
+<div class="row">
+	<div class="col-md-2">
+  	<div class="panel panel-default">
+    	<div class="panel-heading">
+      	<b>Personal Information</b><%= link_to "Edit", '/edit', class: 'pull-right' %>
+      </div>
+      <div class="panel-body">
+        <b>Owner: </b>
+        <%= link_to @owner.name, '/edit' %>
+      <p>
+        <b>Email: </b>
+        <%= @owner.email %>
+      </div>
+      <% if @owner.businesses.count > 0 %>
+      <div class="panel-heading">
+        <b>Business Information</b><%= link_to "Add", new_owner_business_path(@owner), class: 'pull-right' %>
+      </div>      
+      <div class="panel-body">
+        <% @owner.businesses.order("created_at asc").each do |business| %>
+          <b>View:</b>
+          <%= link_to business.name, owner_business_path(@owner, business) %><br>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+   
+	<div class="col-md-10">
+  <% if @owner.businesses.count == 0 %>
+  	<div class="panel panel-danger">
+      <div class="panel-heading">
+        <b>Business Information</b>
+      </div>
+      <div class="panel-body">
+      	<p>Thank you for signing up.   We will need information about your business for you to proceed.</p>
+      	<p>You have not yet provided us information about your business.</p>
+        <p><%= link_to "Add your business now!", new_owner_business_path(@owner) %></p>
+      </div>
+    </div>
+  <% else %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <b>Services Information</b>
+      </div>
+      <div class="panel-body">
+       Ok.  Your business is created.   We're about to add customers, which is kind of why you're here.  But, before we can do that, we need to know what types of services you provide them when they are with you.  You've already categorized your business when you created it.  Similar businesses who have already populated their services will be available options for you when you add here.  You can always add more, but we want you to start by adding at least one service now.  Please tell us what types of services your business provides.
+       <p></p>
+       <p><%= link_to "Add a service your business provides now!", '#' %></p>
+      </div>
+    </div>
+  <% end %>
+
+
+
+
+  </div>
+
+</div>
