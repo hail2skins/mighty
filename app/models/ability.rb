@@ -5,7 +5,7 @@ class Ability
     owner ||= Owner.new
     alias_action :create, :read, :update, :destroy, to: :crud
     if owner.admin?
-      can :manage, :all?
+      can :manage, :all
     else
       can :read, :static_pages
       #can [:new, :delete], :sessions

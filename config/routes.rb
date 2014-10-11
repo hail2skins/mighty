@@ -7,6 +7,10 @@ Mightysmalls::Application.routes.draw do
     resources :businesses
   end
 
+  resources :businesses do
+    resources :customers
+  end
+
   devise_scope :owner do
     get "/signup",        to: 'devise/registrations#new'
     get "/login",         to: 'devise/sessions#new'
