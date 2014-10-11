@@ -4,10 +4,11 @@ describe "Owner pages" do
 	subject { page }
 
   describe "devise/registrations/new.html.erb" do
-  	before { visit signup_path }
-
-  	it { should have_content('Sign up')}
-  	it { should have_title('Sign up')}
+  	before do 
+  		visit signup_path
+	  	expect(page).to have_content('Sign up')
+  		expect(page).to have_title('Sign up')
+  	end
   end
 end
 
@@ -40,9 +41,9 @@ describe "signup" do
 
 		it "should have certain page attributes" do
 			click_button submit
-			page.should have_content("Sign up")
-			page.should have_content("Please review the problems below:")
-			page.should have_content("can't be blank")
+			expect(page).to have_content("Sign up")
+			expect(page).to have_content("Please review the problems below:")
+			expect(page).to have_content("can't be blank")
 		end
 	end
 

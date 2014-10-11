@@ -49,14 +49,14 @@ describe Owner do
 
   it "should require an email address" do
     no_email_owner = Owner.new(@attr.merge(email: ""))
-    no_email_owner.should_not be_valid
+    expect(no_email_owner).to_not be_valid
   end
 
   it "should accept valid email addresses" do
     addresses = %w[owner@foo.com THE_OWNER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
       valid_email_owner = Owner.new(@attr.merge(email: address))
-      valid_email_owner.should be_valid
+      expect(valid_email_owner).to be_valid
     end
   end
 
@@ -64,21 +64,21 @@ describe Owner do
     addresses = %w[owner@foo,com owner_at_foo.org example.owner@foo.]
     addresses.each do |address|
       invalid_email_owner = Owner.new(@attr.merge(email: address))
-      invalid_email_owner.should_not be_valid
+      expect(invalid_email_owner).to_not be_valid
     end
   end
 
   it "should reject duplicate email addresses" do
     Owner.create!(@attr)
     owner_with_duplicate_email = Owner.new(@attr)
-    owner_with_duplicate_email.should_not be_valid
+    expect(owner_with_duplicate_email).to_not be_valid
   end
 
   it "should reject email addresses identical up to case" do
     upcased_email = @attr[:email].upcase
     Owner.create!(@attr.merge(email: upcased_email))
     owner_with_duplicate_email = Owner.new(@attr)
-    owner_with_duplicate_email.should_not be_valid
+    expect(owner_with_duplicate_email).to_not be_valid
   end
 
   describe "passwords" do
@@ -88,30 +88,28 @@ describe Owner do
     end
 
     it "should have a password attribute" do
-      @owner.should respond_to(:password)
+      expect(@owner).to respond_to(:password)
     end
 
     it "should have a password confirmation attribute" do
-      @owner.should respond_to(:password_confirmation)
+      expect(@owner).to respond_to(:password_confirmation)
     end
   end
 
   describe "password validations" do
 
     it "should require a password" do
-      Owner.new(@attr.merge(password: "", password_confirmation: "")).
-        should_not be_valid
+      expect(Owner.new(@attr.merge(password: "", password_confirmation: ""))).to_not be_valid
     end
 
     it "should require a matching password confirmation" do
-      Owner.new(@attr.merge(password_confirmation: "invalid")).
-        should_not be_valid
+      expect(Owner.new(@attr.merge(password_confirmation: "invalid"))).to_not be_valid
     end
 
     it "should reject short passwords" do
       short = "a" * 5
       hash = @attr.merge(password: short, password_confirmation: short)
-      Owner.new(hash).should_not be_valid
+      expect(Owner.new(hash)).to_not be_valid
     end
 
   end
@@ -123,11 +121,11 @@ describe Owner do
     end
 
     it "should have an encrypted password attribute" do
-      @owner.should respond_to(:encrypted_password)
+      expect(@owner).to respond_to(:encrypted_password)
     end
 
     it "should set the encrypted password attribute" do
-      @owner.encrypted_password.should_not be_blank
+      expect(@owner.encrypted_password).to_not be_blank
     end
 
   end
@@ -140,25 +138,25 @@ describe Owner do
 
 
   	it "should have a #first_name" do
-  		@owner.should respond_to(:first_name)
+  		expect(@owner).to respond_to(:first_name)
   	end
 
  		it "should require first_name" do
     	no_firstname_owner = Owner.new(@attr.merge(first_name: ""))
-    	no_firstname_owner.should_not be_valid
+    	expect(no_firstname_owner).to_not be_valid
     end
 
     it "should have a last_name" do
-    	@owner.should respond_to(:last_name)
+    	expect(@owner).to respond_to(:last_name)
     end
 
  		it "should require last_name" do
     	no_lastname_owner = Owner.new(@attr.merge(last_name: ""))
-    	no_lastname_owner.should_not be_valid
+    	expect(no_lastname_owner).to_not be_valid
     end
 
     it "should have a middle_name" do
-    	@owner.should respond_to(:middle_name)
+    	expect(@owner).to respond_to(:middle_name)
     end
 
     it "#name should combine first_name and last_name" do

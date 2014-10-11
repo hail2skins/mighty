@@ -79,84 +79,84 @@ end
 
 ### THEN ###
 Then /^I should be signed in$/ do
-  page.should have_content "Logout"
-  page.should_not have_content "Sign up"
-  page.should_not have_content "Login"
+  expect(page).to have_content "Logout"
+  expect(page).to_not have_content "Sign up"
+  expect(page).to_not have_content "Login"
 end
 
 Then /^I should be logged out$/ do
-  page.should have_content "Sign up"
-  page.should have_content "Login"
-  page.should_not have_content "Logout"
+  expect(page).to have_content "Sign up"
+  expect(page).to have_content "Login"
+  expect(page).to_not have_content "Logout"
 end
 
 Then /^I see an unconfirmed account message$/ do
-  page.should have_content "You have to confirm your account before continuing."
+  expect(page).to have_content "You have to confirm your account before continuing."
 end
 
 Then /^I see a successful login message$/ do
-  page.should have_content "Signed in successfully."
+  expect(page).to have_content "Signed in successfully."
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  expect(page).to have_content "Welcome! You have signed up successfully."
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  expect(page).to have_content "Email is invalid"
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  expect(page).to have_content "Password can't be blank"
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  expect(page).to have_content "Password doesn't match confirmation"
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  expect(page).to have_content "Password doesn't match confirmation"
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content "Signed out successfully."
+  expect(page).to have_content "Signed out successfully."
 end
 
 Then /^I see an invalid login message$/ do
-  page.should have_content "Invalid email or password."
+  expect(page).to have_content "Invalid email or password."
 end
 
 Then /^I should see an account edited message$/ do
-  page.should have_content "You updated your account successfully."
+  expect(page).to have_content "You updated your account successfully."
 end
 
 Then /^I should see my name$/ do
   create_owner
-  page.should have_content @owner.name
+  expect(page).to have_content @owner.name
 end
 
 #added by showing_owner.feature
 
 Then(/^I am at my owner edit page$/) do
-  page.should have_title("Edit #{@owner.name}")
+  expect(page).to have_title("Edit #{@owner.name}")
 end
 
 Given(/^I can see my name in the title$/) do
-  page.should have_title("#{@owner.name}")
+  expect(page).to have_title("#{@owner.name}")
 end
 
 Given(/^I can see my name in a link$/) do
-  page.should have_link("#{@owner.name}")
+  expect(page).to have_link("#{@owner.name}")
 end
 
 #added by editing_owner.feature
 
 Given(/^I am at my owner profile page$/) do
-  assert page.current_path == owner_path(@owner)
+  expect current_path == owner_path(@owner)
 end
 
 Then(/^I should see a form to edit my information$/) do
-  page.should have_css('form', text: "")
+  expect(page).to have_css('form', text: "")
 end
 
 When(/^when I fill in "(.*?)" with current password$/) do |form|
@@ -173,14 +173,14 @@ When(/^I confirm my new email$/) do
 end
 
 Then(/^I can see my email is "(.*?)"$/) do |newmail|
-  page.should have_content(@owner.email)
+  expect(page).to have_content(@owner.email)
 end
 
 #added by signing_up.feature
 
 
 Then(/^as a new "Owner" signing up there is a form to fill in my information$/) do
-  page.should have_css('form', text: "")
+  expect(page).to have_css('form', text: "")
 
   fill_in('Email', with: 'test@test.com')
   fill_in('Password', with: 'password', match: :prefer_exact)
@@ -191,26 +191,26 @@ Then(/^as a new "Owner" signing up there is a form to fill in my information$/) 
 end
 
 Then(/^I should be created successfully$/) do
-  page.should have_content("Welcome! You have signed up successfully.")
+  expect(page).to have_content("Welcome! You have signed up successfully.")
 end
 
 Then(/^be taken to my owner profile page$/) do
-  page.should have_title("Someone New")
-  page.should have_link("Someone New")
-  page.should have_content("test@test.com")
+  expect(page).to have_title("Someone New")
+  expect(page).to have_link("Someone New")
+  expect(page).to have_content("test@test.com")
 end
 
 Then(/^I should be informed I need to add a business$/) do
-  page.should have_content("You have not yet provided us information about your business.")
+  expect(page).to have_content("You have not yet provided us information about your business.")
 end
 
 When(/^I should see a form to login$/) do
-  page.should have_css('form', text: "")
+  expect(page).to have_css('form', text: "")
 end
 
 #deleting_owners.feature
 Then(/^I am at the home page$/) do
-  page.should have_title("Mighty Smalls")
+  expect(page).to have_title("Mighty Smalls")
 end
 
 When(/^I fill in "(.*?)" with my owner email$/) do |email|
@@ -223,11 +223,11 @@ end
 
 #owner_creates_business.feature adds
 Then(/^I can see a form to add business information$/) do
-  page.should have_css('form', text: "")
+  expect(page).to have_css('form', text: "")
 end
 
 Then(/^I can see my "(.*?)" in a link$/) do |businessname|
-  page.should have_link(@owner.businesses.name)
+  expect(page).to have_link(@owner.businesses.name)
 end
 
 When(/^I fill in or select the category of my business$/) do
@@ -241,7 +241,7 @@ Given(/^I have created one business$/) do
 end
 
 Given(/^I can see my business name in a link$/) do
-  page.should have_link(@business.name)
+  expect(page).to have_link(@business.name)
 end
 
 When(/^I click the link with my business name$/) do
@@ -249,11 +249,11 @@ When(/^I click the link with my business name$/) do
 end
 
 Then(/^I am at my business profile page$/) do
-  assert page.current_path == owner_business_path(@owner, @business)
+  expect current_path == owner_business_path(@owner, @business)
 end
 
 Then(/^I should see my business name in the title$/) do
-  page.should have_title(@business.name)
+  expect(page).to have_title(@business.name)
 end
 
 #owner_edits_business.feature
@@ -262,5 +262,5 @@ Given(/^I visit my business profile page$/) do
 end
 
 Then(/^I am at my business edit page$/) do
-  assert page.current_path == edit_owner_business_path(@owner, @business)
+  expect current_path == edit_owner_business_path(@owner, @business)
 end

@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 Capybara.javascript_driver = :webkit
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -45,4 +44,9 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.include Rails.application.routes.url_helpers
+
+  config.infer_spec_type_from_file_location!
+
 end
