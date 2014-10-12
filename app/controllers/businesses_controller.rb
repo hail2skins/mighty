@@ -3,6 +3,7 @@ class BusinessesController < ApplicationController
 	before_action :set_business, only: [:show, :edit, :update, :destroy]
 	load_and_authorize_resource :owner
 	load_and_authorize_resource :business, through: :owner
+	after_action :update_selected, only: :create
 
 
 	def new
@@ -10,6 +11,7 @@ class BusinessesController < ApplicationController
 	end
 
 	def create
+
 		@business = @owner.businesses.new(business_params)
 
 		respond_to do |format|
@@ -51,11 +53,15 @@ class BusinessesController < ApplicationController
 			end
 
 			def business_params
-				params.require(:business).permit(:name, :description)
+				params.require(:business).permit(:name, :description, :selected)
 			end
 
 			def get_owner
 				@owner = Owner.find(params[:owner_id])
+			end
+
+			def update_selected
+				@business.update_attribute(:selected, true) unless @owner.businesses.count > 1 
 			end
 
 end

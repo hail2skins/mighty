@@ -12,7 +12,7 @@ Then(/^I am at the create new customer page$/) do
 end
 
 Then(/^I expect to see a form to add customer information$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_css('form', text: "")
 end
 
 Then(/^I expect to see the title "(.*?)"$/) do |title|

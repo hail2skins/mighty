@@ -52,3 +52,8 @@ end
 def create_business
   @business = @owner.businesses.create(name: "My Great Business", description: "Cool business, huh?")
 end
+
+def set_business
+  @business = @owner.businesses.where(selected: true).first
+  @business.id = params[:business_id]
+end

@@ -1,5 +1,6 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_business, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
 	
@@ -17,6 +18,8 @@ class OwnersController < ApplicationController
 			@owner = Owner.find(params[:id])
 		end	
 
-
+		def set_business
+			@business = @owner.selected_business
+		end
 
 end

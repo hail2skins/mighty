@@ -238,6 +238,7 @@ end
 Given(/^I have created one business$/) do
   create_business
   visit root_path
+  set_business
 end
 
 Given(/^I can see my business name in a link$/) do

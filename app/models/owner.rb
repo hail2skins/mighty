@@ -59,5 +59,9 @@ class Owner < ActiveRecord::Base
   def inactive_message
     !deleted_at? ? super : "This account was deleted on #{deleted_at.to_date}.  Contact support for assistance."
   end
-         
+
+  def selected_business
+    self.businesses.where(selected: true).first
+  end
+
 end
