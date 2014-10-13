@@ -15,4 +15,24 @@
     <%= link_to "Back to owner page", @owner %>
 
     </div>
+
+
+  <div class="col-md-10">
+  <% if @business.customers.count == 0 %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <b>Customer Information</b>
+      </div>
+      <div class="panel-body">
+        <p>
+          You have not yet added any customers.
+        </p>
+        <p><%= link_to "Add a customer for your business now!", new_business_customer_path(@business) %></p>
+      </div>
+    </div>
+  <% end %>
+
+
   </div>
+
+</div>

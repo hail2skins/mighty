@@ -50,10 +50,13 @@ def login
 end
 
 def create_business
-  @business = @owner.businesses.create(name: "My Great Business", description: "Cool business, huh?")
+  @business = @owner.businesses.create!(name: "My Great Business", description: "Cool business, huh?")
 end
 
-def set_business
-  @business = @owner.businesses.where(selected: true).first
-  @business.id = params[:business_id]
+def create_business_form
+  click_link "Add your business now!"
+  fill_in "business_name", with: "Working As Intended"
+  fill_in "business_description", with: "Comrade"
+  click_button "Submit my business information"
 end
+

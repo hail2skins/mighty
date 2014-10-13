@@ -237,9 +237,8 @@ end
 #owner_shows_business.feature adds
 Given(/^I have created one business$/) do
   create_business
-  visit root_path
-  set_business
-end
+
+ end
 
 Given(/^I can see my business name in a link$/) do
   expect(page).to have_link(@business.name)

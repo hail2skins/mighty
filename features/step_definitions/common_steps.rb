@@ -14,7 +14,7 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |form, data|
   page.fill_in form, with: data
 end
 
-Then(/^when I click the "(.*?)" button$/) do |button|
+Then(/^I click the "(.*?)" button$/) do |button|
   click_button(button)
 end
 

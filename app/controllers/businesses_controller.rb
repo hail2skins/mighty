@@ -15,7 +15,9 @@ class BusinessesController < ApplicationController
 		@business = @owner.businesses.new(business_params)
 
 		respond_to do |format|
-			if @business.save
+			if @business.save && @owner.businesses.count == 1 then
+				format.html { redirect_to owner_business_path(@owner, @business) }
+			elsif
 				format.html { redirect_to current_owner, notice: 'Congratulations.  Your business has been created.' }
 			else
 				format.html { render action: 'new' }
