@@ -61,7 +61,7 @@
         <p>
           You have not yet added any customers.
         </p>
-        <p><%= link_to "Add a customer for your business now!", new_business_customer_path(@business) %></p>
+        <p><%= link_to "Add a customer for your business now!", owner_business_path(@owner, @business) %></p>
       </div>
     </div>
   <% end %>

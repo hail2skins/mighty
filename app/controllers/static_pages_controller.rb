@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 	def home
   	#Allows the current_user to create a business and bind to user_id if signed_in, which is provided by Devise.
  		if signed_in?
-      redirect_to current_owner
+      after_sign_in_path_for(resource)
     else
       render 'static_pages/home'
   	end	 

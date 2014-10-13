@@ -13,7 +13,12 @@ class ApplicationController < ActionController::Base
 
   #supplied method by device
   def after_sign_in_path_for(resource)
-  	current_owner
+  	if current_owner.businesses.count == 1 then
+  		@business = current_owner.businesses.first
+  		owner_business_path(current_owner, @business)
+  	else
+  		current_owner
+  	end
 	end
 
 

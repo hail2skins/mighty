@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: [:show, :edit, :update, :destroy]
-  before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :set_business
   load_and_authorize_resource
 
 	
