@@ -24,5 +24,5 @@ Feature: Deleting Owners
  		Then I should see the title "Login"
  		When I fill in "Email" with my owner email
  		And I fill in "Password" with my owner password
- 		When when I click the "Login" button
+ 		When I click the "Login" button
  		Then I should see content "This account was deleted on"

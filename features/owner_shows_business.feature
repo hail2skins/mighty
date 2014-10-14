@@ -6,14 +6,16 @@ Feature: Owner shows business
 
 	Background: Log in and create business
 	  Given I am logged in
-	  And I am at my owner profile page
 	  And I have created one business
+    Then I logout
+    When I login with valid credentials
   	
   	Scenario: Showing my business page
-   		And I can see my business name in a link
-  		When I click the link with my business name
-  		Then I am at my business profile page
+   		Then I can see my business name in a link
   		And I should see my business name in the title
-  		And I should see a link to "Back to owner page"
+  		And I expect to see a link to "Back to owner page"
   		When I click the "Back to owner page" link
   		Then I am at my owner profile page
+      And I can see my business name in a link
+      When I click the link with my business name
+      Then I am at my business profile page

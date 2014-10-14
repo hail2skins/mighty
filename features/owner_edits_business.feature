@@ -17,7 +17,7 @@ Feature: Owner edits business
 	  	And I should see the title "Edit"
 	  	And I should see content "Editing"
 	  	When I fill in "Business name" with "Awesome Test Business"
-	  	And when I click the "Submit my business information" button
+	  	And I click the "Submit my business information" button
 	  	Then I should see content "Your business information has been successfully updated."
 	  	And I am at my owner profile page
 	  	And I should see a link to "Awesome Test Business"
@@ -30,6 +30,6 @@ Feature: Owner edits business
 	  		And I should see the title "Edit"
 	  		And I should see content "Editing"
 	  		When I fill in "Business name" with ""
-	  		And when I click the "Submit my business information" button
+	  		And I click the "Submit my business information" button
 	  		Then I should see content "Please review the problems below:"
 	  		And I should see content "can't be blank"
