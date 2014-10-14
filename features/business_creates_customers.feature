@@ -22,8 +22,7 @@ Feature: Business creates customers
 	  	And I fill in "Phone" with "651.555.1212"
 	  	And I fill in "Referred by" with ""
 	  	When I click the "Create Customer" button
-	  	Then I expect to see content "This customer has been created."
-	  	And I am at my owner profile page
+	  	Then I expect to see content "Customer added."
 	  	Then I expect to see content "Customer Information"
 	  	But I expect to not see content "You have not yet added any customers."
 	  	Then I expect to see a link to "Customers"

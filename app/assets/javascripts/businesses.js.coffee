@@ -2,13 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-	$("#customers").dataTable
-  	sPaginationType: "bootstrap"
-  	"bRetrieve": true
-  	"bDestroy": true
+	$('#customers').dataTable({
+		pagingType: 'full_numbers',
+	})
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
 $(document).on('page:restore', ready)
-
-
