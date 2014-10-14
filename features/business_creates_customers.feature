@@ -27,5 +27,9 @@ Feature: Business creates customers
 	  	But I expect to not see content "You have not yet added any customers."
 	  	Then I expect to see a link to "Customers"
 	  	And I expect to see a link to "Add"
-	  	And I expect to see content "Customers = 1"
-	  	And I expect to see a link to "Add customers"
+	  	And I expect to see content "Customers: 1"
+	  	And I expect the page to have a table
+	  	And I expect to see a link to "Kathy"
+	  	And I expect to see content "test@test.com"
+	  	And I expect to see a link to "Edit"
+	  	And I expect to see a link to "Delete"

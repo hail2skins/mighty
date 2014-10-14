@@ -24,5 +24,9 @@ Then(/^I expect to see the title "(.*?)"$/) do |title|
 end
 
 Then(/^I expect to not see content "(.*?)"$/) do |content|
-  pending # express the regexp above with the code you wish you had
+  expect(page).to_not have_content(content)
+end
+
+Then(/^I expect the page to have a table$/) do
+  expect(page).to have_selector('table')
 end

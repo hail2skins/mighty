@@ -18,14 +18,14 @@
         <b>Customer Information</b><%= link_to "Add", new_business_customer_path(@business), class: 'pull-right' %>
       </div>
       <div class="panel-body">
-        <b>Customers = </b><%= link_to @business.customers.count, '#' %>
+        <%= link_to "Customers: ", business_customers_path(@business) %><%= @business.customers.count %>
       </div>
-
+      
     <% end %>
 
 
      </div>
-    <%= link_to "Back to owner page", @owner %>
+    
   </div>
 
 
@@ -41,10 +41,11 @@
         </p>
         <p><%= link_to "Add a customer for your business now!", new_business_customer_path(@business) %></p>
       </div>
+      <%= link_to "Back to owner page", @owner %>
     </div>
 
   <% else %>
- <div class="col-lg-7">
+ 
     <h3> Customer List for <%= @business.name %></h3>
       <table class="table table-condensed table-striped table-bordered" id="customers">
         <thead>
@@ -78,8 +79,7 @@
         <%= link_to 'Edit', edit_owner_business_path(@owner, @business) %> |
         <%= link_to 'Back to owner page', owner_businesses_path(@owner) %>
       </div>
-    </div>
-
+ 
   <% end %>
 
 
