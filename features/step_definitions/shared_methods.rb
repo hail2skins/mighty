@@ -60,3 +60,8 @@ def create_business_form
   click_button "Submit my business information"
 end
 
+def create_two_customers
+  @business.customers.create!(first_name: "David", last_name: "Michael", email: "david@email.com", phone: "1")
+  @business.customers.create!(first_name: "Art", last_name: "Mills", email: "art@email.com", phone: "2")
+end
+

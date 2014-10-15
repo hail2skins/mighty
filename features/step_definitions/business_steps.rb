@@ -19,14 +19,15 @@ Then(/^I expect to see a header with "(.*?)"$/) do |header|
   expect(page).to have_css('h1', header)
 end
 
-Then(/^I expect to see the title "(.*?)"$/) do |title|
-  expect(page).to have_title(title)
-end
-
 Then(/^I expect to not see content "(.*?)"$/) do |content|
   expect(page).to_not have_content(content)
 end
 
 Then(/^I expect the page to have a table$/) do
   expect(page).to have_selector('table')
+end
+
+#added for business_shows_customers.feature
+Given(/^I have created two customers$/) do
+  create_two_customers
 end

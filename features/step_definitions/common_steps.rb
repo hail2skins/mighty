@@ -18,7 +18,7 @@ Then(/^I click the "(.*?)" button$/) do |button|
   click_button(button)
 end
 
-Then(/^I should see the title "(.*?)"$/) do |title|
+Then(/^I expect to see the title "(.*?)"$/) do |title|
   expect(page).to have_title(title)
 end
 

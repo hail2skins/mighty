@@ -1,6 +1,10 @@
 class CustomersController < ApplicationController
 	before_action :get_business_and_owner
 
+	def index
+		@customers = @business.customers.all
+	end
+
 	def new
 		@customer = @business.customers.build
 	end
