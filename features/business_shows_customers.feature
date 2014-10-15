@@ -30,4 +30,9 @@ Feature: Business creates customers
 	  	When I click the "Art" link
 	  	Then I expect to see the title "Art Mills"
 	  	And I expect to see content "Art Mills Customer Information"
+	  	And I expect to see content "Name: Art Mills"
+	  	And I expect to see content "Email: art@email.com"
+	  	And I expect to see content "Phone:"
+	  	And I expect to see a link to "Edit Art's Customer Information"
+	  	And I expect to see a link to "Delete This Customer"
 
