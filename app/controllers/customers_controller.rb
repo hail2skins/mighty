@@ -43,8 +43,5 @@ class CustomersController < ApplicationController
 				params.require(:customer).permit(:first_name, :middle_name, :last_name, :email, :phone, :referred_by)
 			end
 
-			def set_customer
-				@customer = @business.customers.find(params[:id])
-			end
 
 end
