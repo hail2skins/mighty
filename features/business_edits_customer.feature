@@ -22,7 +22,6 @@ Feature: Business edits customers
 	  	And I fill in "Middle name" with "Raphael"
 	  	And I fill in "Last name" with "Miller"
 	  	And I fill in "Email" with "test@test.com"
-	  	And I fill in "Phone" with "651.555.1212"
 	  	And I fill in "Referred by" with "Rebecca Looney"
 	  	And I click the "Update" button
 	  	Then I expect to see content "This customer's information has been updated."

@@ -31,3 +31,8 @@ end
 Given(/^I have created two customers$/) do
   create_two_customers
 end
+
+#added for business_edits_customers.feature
+Then(/^I expect to see a form to edit information$/) do
+  expect(page).to have_css("form", "")
+end
