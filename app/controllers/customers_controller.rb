@@ -38,6 +38,13 @@ class CustomersController < ApplicationController
     end
   end
 
+  def destroy
+    @customer.destroy
+    respond_to do |format|
+      format.html { redirect_to [@owner, @business], notice: 'Customer has been deleted.' }
+    end
+  end
+
 	private
 
 			def set_customer
