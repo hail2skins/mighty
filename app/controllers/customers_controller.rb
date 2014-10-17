@@ -26,7 +26,17 @@ class CustomersController < ApplicationController
 	end
 
 	def edit
-	end
+  end
+
+  def update
+    respond_to do |format|
+      if @customer.update(customer_params)
+        format.html { redirect_to [@owner, @business], notice: "Information for #{@customer.name} has been updated."}
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
 
 	private
 

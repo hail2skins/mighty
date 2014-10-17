@@ -7,8 +7,8 @@ Feature: Business edits customers
 	  Given I am logged in
 	  And I have created one business
 	  And I have created two customers
-    Then I logout
-    When I login with valid credentials
+      Then I logout
+      When I login with valid credentials
 	
 	  Scenario: Showing customers
 	  	And I expect to see a link to "Customers"
@@ -16,13 +16,22 @@ Feature: Business edits customers
 	  	When I click the "Art" link
 	  	Then I expect to see a link to "Edit Customer"
 	  	When I click the "Edit Customer" link
-	  	Then I expect to see the title "Edit Art Mills"
-	  	And I expect to see a form to edit information
+	  	Then I expect to see a link to "Back"
+        When I click the "Back" link
+        Then I am at my business profile page
+        When I click the "Art" link
+        Then I expect to see a link to "Edit Customer"
+        When I click the "Edit Customer" link
+        Then I expect to see a form to edit information
 	  	And I fill in "First name" with "Arthur"
 	  	And I fill in "Middle name" with "Raphael"
 	  	And I fill in "Last name" with "Miller"
 	  	And I fill in "Email" with "test@test.com"
 	  	And I fill in "Referred by" with "Rebecca Looney"
-	  	And I click the "Update" button
-	  	Then I expect to see content "This customer's information has been updated."
+	  	And I click the "Update Customer" button
+	  	Then I expect to see content "Information for Arthur Miller has been updated."
+        And I am at my business profile page
+        And I expect to see content "Arthur"
+        And I expect to see content "Miller"
+        And I expect to see content "test@test.com"
 

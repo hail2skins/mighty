@@ -34,5 +34,5 @@ end
 
 #added for business_edits_customers.feature
 Then(/^I expect to see a form to edit information$/) do
-  expect(page).to have_css("form", "")
+  expect(page).to have_css('form', text: "")
 end
