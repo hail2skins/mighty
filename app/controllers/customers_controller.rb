@@ -11,6 +11,7 @@ class CustomersController < ApplicationController
 
 	def new
 		@customer = @business.customers.build
+    @customer.phones.build(params[:phones])
 	end
 
 	def create
@@ -57,7 +58,7 @@ class CustomersController < ApplicationController
 			end
 
 			def customer_params
-				params.require(:customer).permit(:first_name, :middle_name, :last_name, :email, :phone, :referred_by)
+				params.require(:customer).permit(:first_name, :middle_name, :last_name, :email, :referred_by, phones_attributes: [:id, :number])
 			end
 
 

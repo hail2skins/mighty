@@ -8,7 +8,7 @@ Feature: Signing Up
 
 	  Scenario: Signing up
 	  	When I click the "Sign up now!" link
-	  	Then I should see the title "Sign up"
+	  	Then I expect to see the title "Sign up"
 	  	And as a new "Owner" signing up there is a form to fill in my information
 	  	And I click the "Create my account" button
 	  	Then I should see content "Please open the link to activate your account."
@@ -25,4 +25,4 @@ Feature: Signing Up
 	  	And I should see a link to "Login"
 	  	When I click the "Login" link
 	  	Then I should see a form to login
-	  	And I should see the title "Login"
+	  	And I expect to see the title "Login"

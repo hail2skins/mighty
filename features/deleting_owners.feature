@@ -21,7 +21,7 @@ Feature: Deleting Owners
  		And I should see content "Bye! Your account was successfully cancelled. We hope to see you again soon."
  		And I should see a link to "Login"
  		When I click the "Login" link
- 		Then I should see the title "Login"
+ 		Then I expect to see the title "Login"
  		When I fill in "Email" with my owner email
  		And I fill in "Password" with my owner password
  		When I click the "Login" button

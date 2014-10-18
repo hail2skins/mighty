@@ -64,7 +64,10 @@
             <td><%= link_to customer.first_name, [@business, customer] %></td>
             <td><%= customer.last_name %></td>
             <td><%= customer.email %></td>
-            <td><% customer.phone %></td>
+            <td><% customer.phones.each do |phone| %>
+                  <%= number_to_phone(phone.number, area_code: true) %><br />
+                <% end %>
+            </td>
             <td><%= link_to 'Edit', edit_business_customer_path(@business, customer), class: 'btn' %></td>
             <td><%= link_to 'Delete', [@business, customer], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>

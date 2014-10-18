@@ -12,14 +12,14 @@ Feature: Business creates customers
 	  	And I expect to see content "You have not yet added any customers."
 	  	And I expect to see a link to "Add a customer for your business now!"
 	  	When I click the "Add a customer for your business now!" link
-		  Then I expect to see a form to add customer information
-		  And I expect to see a header with "New Customer"
+		Then I expect to see a form to add customer information
+		And I expect to see a header with "New Customer"
 	  	And I expect to see the title "Create a customer"
 	  	When I fill in "First name" with "Kathy"
 	  	And I fill in "Middle name" with ""
 	  	And I fill in "Last name" with "Davis"
 	  	And I fill in "Email" with "test@test.com"
-	  	And I fill in "Phone" with "651.555.1212"
+	  	And I fill in "Phone Number" with "6515551212"
 	  	And I fill in "Referred by" with ""
 	  	When I click the "Create Customer" button
 	  	Then I expect to see content "Customer added."
@@ -31,5 +31,6 @@ Feature: Business creates customers
 	  	And I expect the page to have a table
 	  	And I expect to see a link to "Kathy"
 	  	And I expect to see content "test@test.com"
+        And I expect to see content "(651) 555-1212"
 	  	And I expect to see a link to "Edit"
 	  	And I expect to see a link to "Delete"

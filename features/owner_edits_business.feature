@@ -14,7 +14,7 @@ Feature: Owner edits business
 	  	And I can see my business name in a link
 	  	When I click the "Edit" link
 	  	Then I am at my business edit page
-	  	And I should see the title "Edit"
+	  	And I expect to see the title "Edit"
 	  	And I should see content "Editing"
 	  	When I fill in "Business name" with "Awesome Test Business"
 	  	And I click the "Submit my business information" button
@@ -27,7 +27,7 @@ Feature: Owner edits business
 	  		And I can see my business name in a link
 	  		When I click the "Edit" link
 	  		Then I am at my business edit page
-	  		And I should see the title "Edit"
+	  		And I expect to see the title "Edit"
 	  		And I should see content "Editing"
 	  		When I fill in "Business name" with ""
 	  		And I click the "Submit my business information" button
