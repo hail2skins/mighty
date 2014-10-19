@@ -6,7 +6,7 @@ Feature: Business creates customers
 	Background: Logging in with a business
 		Given I am logged in
 		And I have follow prompts to add a business
-	
+
 	  Scenario: Creating first customer
 	  	Then I expect to see content "Customer Information"
 	  	And I expect to see content "You have not yet added any customers."
@@ -19,9 +19,20 @@ Feature: Business creates customers
 	  	And I fill in "Middle name" with ""
 	  	And I fill in "Last name" with "Davis"
 	  	And I fill in "Email" with "test@test.com"
-	  	And I fill in "Phone Number" with "6515551212"
-	  	And I fill in "Referred by" with ""
-	  	When I click the "Create Customer" button
+        And I fill in "Referred by" with ""
+	  	And I fill in "Phone Number" with "65155512123"
+   	  	When I click the "Create Customer" button
+        Then I expect to see content "1 error prohibited this customer from being saved:"
+        And I expect to see content "Phones number is the wrong length (should be 10 characters)"
+        When I fill in "Phone Number" with "1"
+        And I click the "Create Customer" button
+        Then I expect to see content "Phones number is the wrong length (should be 10 characters)"
+        When I fill in "Phone Number" with "Hi mom"
+        And I click the "Create Customer" button
+        Then I expect to see content "Phones number is the wrong length (should be 10 characters)"
+        And I expect to see content "Phones number is not a number"
+        When I fill in "Phone Number" with "6515551212"
+        And I click the "Create Customer" button
 	  	Then I expect to see content "Customer added."
 	  	Then I expect to see content "Customer Information"
 	  	But I expect to not see content "You have not yet added any customers."
