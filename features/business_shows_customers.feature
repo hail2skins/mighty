@@ -32,7 +32,7 @@ Feature: Business creates customers
 	  	And I expect to see content "Art Mills Customer Information"
 	  	And I expect to see content "Name: Art Mills"
 	  	And I expect to see content "Email: art@email.com"
-	  	And I expect to see content "Phone Numbers:"
+	  	And I expect to see content "Phone Numbers: (612) 333-3333"
 	  	And I expect to see a link to "Edit Customer"
 	  	And I expect to see a link to "Delete Customer"
 	  	And I expect to see a link to "Back to Business Page"

@@ -28,10 +28,12 @@ Feature: Business edits customers
 	  	And I fill in "Last name" with "Miller"
 	  	And I fill in "Email" with "test@test.com"
 	  	And I fill in "Referred by" with "Rebecca Looney"
+        And I fill in "Phone Number" with "6123333333"
 	  	And I click the "Update Customer" button
 	  	Then I expect to see content "Information for Arthur Miller has been updated."
         And I am at my business profile page
         And I expect to see content "Arthur"
         And I expect to see content "Miller"
         And I expect to see content "test@test.com"
+        And I expect to see content "(612) 333-3333"
 
