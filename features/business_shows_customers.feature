@@ -7,8 +7,8 @@ Feature: Business creates customers
 	  Given I am logged in
 	  And I have created one business
 	  And I have created two customers
-    Then I logout
-    When I login with valid credentials
+      Then I logout
+      When I login with valid credentials
 	
 	  Scenario: Showing customers
 	  	Then I expect to see content "Customer Information"
