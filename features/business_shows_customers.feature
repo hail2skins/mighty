@@ -27,7 +27,7 @@ Feature: Business creates customers
 	  	And I expect to see content "Michael"
 	  	And I expect to see content "art@email.com"
 	  	And I expect to see content "david@email.com"
-	  	And I expect to see content "Visit"
+	  	And I expect to see content "Visits"
 	  	And I expect to see content "Total Customer Visits:"
 	  	And I expect to see a link to "0"
 	  	When I click the "Art" link
