@@ -19,6 +19,7 @@ class Business < ActiveRecord::Base
 	accepts_nested_attributes_for :categories
 
 	has_many :customers, dependent: :destroy
+  has_many :visits, through: :customers
 
 	validates :owner_id, presence: true
 	validates :name, presence: true

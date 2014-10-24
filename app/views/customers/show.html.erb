@@ -44,8 +44,16 @@
                       </tr>
                       <tr>
                         <td>Last Visit:</td>
-                        <td>placeholder</td>
+                        <td><%= @customer.visits.count > 0 ? @customer.visits.last.date_of_visit : "None Recorded" %></td>
                       </tr>
+                      <tr>
+                        <td>Total Visits:</td>
+                        <td><%= link_to @customer.visits.count, new_customer_visit_path(@customer) %></td>
+
+
+                      </tr>
+
+                      <tr>
                         <td>Phone Numbers:</td>
                         <td><% @customer.phones.each do |phone| %>
                               <%= number_to_phone(phone.number, area_code: true) %><br />

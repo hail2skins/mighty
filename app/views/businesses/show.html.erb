@@ -19,6 +19,7 @@
       </div>
       <div class="panel-body">
         <%= link_to "Customers: ", business_customers_path(@business) %><%= @business.customers.count %>
+        <p>Total Customer Visits: <%= @business.visits.count %></p>
       </div>
       
     <% end %>
@@ -69,7 +70,7 @@
                   <%= number_to_phone(phone.number, area_code: true) %><br />
                 <% end %>
             </td>
-            <td><%= customer.visits.count %></td>
+            <td><%= link_to customer.visits.count, new_customer_visit_path(customer) %></td>
             <td><%= link_to 'Edit', edit_business_customer_path(@business, customer), class: 'btn' %></td>
             <td><%= link_to 'Delete', [@business, customer], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>

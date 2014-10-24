@@ -36,3 +36,7 @@ end
 Then(/^I expect to see a form to edit information$/) do
   expect(page).to have_css('form', text: "")
 end
+
+Then(/^I am at the new visit for customer page$/) do
+  expect current_path == new_customer_visit_path(@customer)
+end
