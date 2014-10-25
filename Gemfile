@@ -75,6 +75,8 @@ gem 'unicorn'
 
 gem 'devise'
 
+gem 'date_validator'
+
 gem "spring", group: :development
 gem "spring-commands-rspec", group: :development
 gem "spring-commands-cucumber"

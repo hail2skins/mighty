@@ -54,5 +54,3 @@ Feature: Business creates customers
         And I expect to see a link to "0"
 	  	And I expect to see a link to "Edit"
 	  	And I expect to see a link to "Delete"
-        When I click the "0" link
-        Then I am at the new visit for customer page
