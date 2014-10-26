@@ -64,3 +64,5 @@ def create_two_customers
   @business.customers.create!(first_name: "David", last_name: "Michael", email: "david@email.com", phones_attributes: [number: "6122222222"])
   @business.customers.create!(first_name: "Art", last_name: "Mills", email: "art@email.com", phones_attributes: [number: "6123333333"])
 end
+
+

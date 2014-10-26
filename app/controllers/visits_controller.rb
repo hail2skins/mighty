@@ -6,8 +6,9 @@ class VisitsController < ApplicationController
     @visit = @customer.visits.new
   end
 
+
   def create
-    @visit = @customer.visits.new(visit_params)
+    @visit = @customer.visits.build(visit_params)
 
     respond_to do |format|
       if @visit.save

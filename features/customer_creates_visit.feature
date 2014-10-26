@@ -14,8 +14,8 @@ Feature: Customer creates visit
     Then I expect to see content "Visits"
     And I expect to see a link to "0"
     When I click the "0" link inside the table
-    Then I expect to see content "New visit for"
-    And I expect to see the title "Add a visit"
+    Then I expect to see content "New visit for Art Mills"
+    And I expect to see the title "Add a visit for Art Mills"
     And I expect to see a form to add a new visit
     And I expect to see content "Visit notes"
     And I expect to see content "Date of visit"
@@ -25,14 +25,11 @@ Feature: Customer creates visit
     Then I am at my business profile page
     And I expect to see content "Total Customer Visits: 1"
     And I expect to see a link to "1"
-    And I expect to see content "Visit added for"
-
-    Scenario: Creating a new visit from the customer show page
-      When I click the "Art" link
-      Then I am at my customer show page
-
-
-
-
+    And I expect to see content "Visit added for Art Mills"
+    When I click the "Art" link
+    Then I am at my customer show page
+    And I expect to see content "Last Visit: 10/24/2014"
+    And I expect to see content "Total Visits:"
+    And I expect to see a link to "1"
 
 

@@ -44,7 +44,7 @@
                       </tr>
                       <tr>
                         <td>Last Visit:</td>
-                        <td><%= @customer.visits.count > 0 ? @customer.visits.last.date_of_visit : "None Recorded" %></td>
+                        <td><%= @customer.visits.count > 0 ? @customer.visits.last.date_of_visit.strftime("%m/%d/%Y") : "None Recorded" %></td>
                       </tr>
                       <tr>
                         <td>Total Visits:</td>
