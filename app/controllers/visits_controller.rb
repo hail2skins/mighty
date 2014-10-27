@@ -1,14 +1,17 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
-  before_action :set_visit, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_visit, only: [ :show ]
 
   def new
-    @visit = @customer.visits.new
+    @visit = @customer.visits.build
   end
 
+  def show
+
+  end
 
   def create
-    @visit = @customer.visits.build(visit_params)
+    @visit = @customer.visits.new(visit_params)
 
     respond_to do |format|
       if @visit.save
@@ -26,7 +29,7 @@ class VisitsController < ApplicationController
       end
 
       def visit_params
-        params.require(:visit).permit(:visit_notes, :date_of_visit, :customer_id, :business_id)
+        params.require(:visit).permit(:visit_notes, :date_of_visit, :customer_id)
       end
 
       def get_customer_business_and_owner

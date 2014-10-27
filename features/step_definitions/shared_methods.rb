@@ -65,4 +65,7 @@ def create_two_customers
   @business.customers.create!(first_name: "Art", last_name: "Mills", email: "art@email.com", phones_attributes: [number: "6123333333"])
 end
 
-
+ Given(/^I have created a visit for each customer$/) do
+   @business.customers.first.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
+   @business.customers.last.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
+ end

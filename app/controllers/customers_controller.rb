@@ -7,6 +7,7 @@ class CustomersController < ApplicationController
 	end
 
 	def show
+    @visit = @customer.visits.last
 	end
 
 	def new
