@@ -1,6 +1,10 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
   before_action :set_visit, only: [ :show ]
+  
+  def index
+    @visits = @customer.visits.all
+  end
 
   def new
     @visit = @customer.visits.build
