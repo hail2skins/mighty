@@ -33,6 +33,19 @@ Feature: Customer edits visit
     And I click the "Update Visit" button
     Then I am at my customer show page
     And I expect to see content "Visit successfully edited."
+    And I expect to see a link to "Art"
+    When I click the "Art" link
+    Then I expect to see a link to "1"
+    When I click the "1" link
+    Then I expect to see content "Art is so cute."
+    And I expect to see a link to "Edit"
+    When I click the "Edit" link
+    Then I expect to see a form to edit visit
+    And I expect to see content "Art is so cute."
+    When I fill in "Visit notes" with "He really, really is."
+    And I click the "Update Visit" button
+    Then I am at my customer show page
+    And I expect to see content "Visit successfully edited."
     
 
 
