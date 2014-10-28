@@ -20,7 +20,18 @@ Feature: Customer shows visits
     And I expect to see a link to "10/24/2014"
     When I click the "10/24/2014" link
     Then I expect to see the title "View visit for Art Mills"
+    And I expect to see content "Visit notes:"
     And I expect to see content "I'm Art's customer and my skin is sensitive"
+    And I expect to see content "Date of visit:"
+    And I expect to see content "10/24/2014"
     And I expect to see a link to "Return to customer page"
     And I expect to see a link to "Return to main business page"
-    And I expect to see a link to "Add a new visit"
+    When I click the "Return to customer page" link
+    Then I am at my customer show page
+    And I expect to see content "Total Visits:"
+    And I expect to see a link to "1"
+    When I click the "1" link
+    Then I expect to see content "Visit history for Art Mills"
+    And I expect to see content "Visit history for Art Mills"
+    
+    
