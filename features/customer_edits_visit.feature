@@ -7,59 +7,33 @@ Feature: Customer edits visit
     Given I am logged in
     And I have created one business
     And I have created two customers
-    And I have created one visit
+    And I have created a visit for each customer
     Then I logout
     When I login with valid credentials
 
 
-  Scenario: Editing a visit from the business show page
-    Then I expect to see content "Visits"
-    And I expect to see a link to "1"
-    When I click the "1" link
-    Then I expect to see content "Edit visit for Art Mills"
-    And I expect to see the title "Edit visit for Art Mills"
-    And I expect to see a form to edit a visit
+  Scenario: Editing a visit from the customer show page
+    Then I expect to see a link to "Art"
+    When I click the "Art" link
+    Then I am at my customer show page
+    And I expect to see content "Last Visit:"
+    And I expect to see a link to "10/24/2014"
+    When I click the "10/24/2014" link
+    Then I expect to see a link to "Edit this visit"
+    When I click the "Edit this visit" link
+    Then I expect to see a form to edit visit
+    And I expect to see the title "Edit this visit"
+    And I expect to see content "Editing this visit"
+    And I expect to see a link to "Back to business page"
+    And I expect to see a link to "Back to customer view"
     And I expect to see content "Visit notes"
+    And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "Date of visit"
-    When I fill in "Visit notes" with "Skin was sensitive today. Like always."
-    Then I select date from date selector
-    And I click the "Create Visit" button
-    Then I am at my business profile page
-    And I expect to see content "Total Customer Visits: 1"
-    And I expect to see a link to "1"
-    And I expect to see content "Visit added for Art Mills"
-    When I click the "Art" link
+    When I fill in "Visit notes" with "Art is so cute."
+    And I click the "Update Visit" button
     Then I am at my customer show page
-    And I expect to see content "Last Visit: 10/24/2014"
-    And I expect to see content "Total Visits:"
-    And I expect to see a link to "1"
-
-  Scenario: Creating a new visit from the customer show page
-    When I click the "Art" link
-    Then I am at my customer show page
-    And I expect to see content "Last Visit: None Recorded"
-    And I expect to see content "Total Visits:"
-    And I expect to see a link to "0"
-    When I click the "0" link
-    Then I expect to see content "New visit for Art Mills"
-    And I expect to see the title "Add a visit for Art Mills"
-    And I expect to see a form to add a new visit
-    And I expect to see content "Visit notes"
-    And I expect to see content "Date of visit"
-    When I fill in "Visit notes" with "Skin was sensitive today."
-    Then I select date from date selector
-    And I click the "Create Visit" button
-    Then I am at my business profile page
-    And I expect to see content "Total Customer Visits: 1"
-    And I expect to see a link to "1"
-    And I expect to see content "Visit added for Art Mills"
-    When I click the "Art" link
-    Then I am at my customer show page
-    And I expect to see content "Last Visit: 10/24/2014"
-    And I expect to see content "Total Visits:"
-    And I expect to see a link to "1"
-
-
+    And I expect to see content "Visit successfully edited."
+    
 
 
 

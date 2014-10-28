@@ -1,6 +1,6 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
-  before_action :set_visit, only: [ :show ]
+  before_action :set_visit, only: [ :show, :edit, :update, :destroy ]
   
   def index
     @visits = @customer.visits.all
@@ -11,7 +11,6 @@ class VisitsController < ApplicationController
   end
 
   def show
-
   end
 
   def create
@@ -25,6 +24,21 @@ class VisitsController < ApplicationController
       end
     end
   end
+  
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @visit.update(visit_params)
+        format.html { redirect_to [@owner, @business], notice: "Visit successfully edited." }
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
+  
+
 
   private
 

@@ -19,6 +19,6 @@ Then(/^I am at my customer show page$/) do
   expect current_path == business_customer_path(@business, @customer)
 end
 
-Then(/^I expect to see a form to edit a visit$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I expect to see a form to edit visit$/) do
+  expect(page).to have_css('form', text: "")
 end
