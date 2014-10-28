@@ -29,6 +29,7 @@ Feature: Customer shows visits
     When I click the "Return to customer page" link
     Then I am at my customer show page
     And I expect to see content "Total Visits:"
+    And I expect to see a link to "My Visit History"
     And I expect to see a link to "1"
     When I click the "1" link
     Then I expect to see the title "Visit history for Art Mills"
@@ -38,6 +39,8 @@ Feature: Customer shows visits
     And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "10/24/2014"
     And I expect to see a link to "Show"
+    And I expect to see a link to "Return to customer page"
+    And I expect to see a link to "Return to main business page"
     When I click the "Show" link
     Then I expect to see the title "View visit for Art Mills"
     

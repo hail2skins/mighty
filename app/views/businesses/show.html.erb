@@ -71,7 +71,7 @@
                 <% end %>
             </td>
             <td><%= link_to customer.visits.count, new_customer_visit_path(customer) %></td>
-            <td><%= link_to 'Edit', edit_business_customer_path(@business, customer), class: 'btn' %></td>
+            <td><%= link_to 'Edit', edit_business_customer_path(@business, customer), class: 'btn btn-primary' %></td>
             <td><%= link_to 'Delete', [@business, customer], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
           <% end %>
