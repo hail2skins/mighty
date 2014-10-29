@@ -21,7 +21,7 @@
             </tbody>
           </table>
           <%= link_to "Edit this visit", edit_customer_visit_path(@customer, @visit) %> |
-          <%= link_to "Delete this visit", '#' %>
+          <%= link_to "Delete this visit", [@customer, @visit], method: :delete, data: { confirm: 'Are you sure?' } %> %>
         </div>
       </div>
     </div>

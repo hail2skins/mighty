@@ -24,13 +24,13 @@ Feature: Customer deletes visit
     Then I am at my customer show page
     And I expect to see content "Visit deleted."
     
-    Scenario: Deleting from the index page
+  Scenario: Deleting from the index page
     And I expect to see a link to "Art"
     When I click the "Art" link
     Then I expect to see a link to "1"
     When I click the "1" link
-    And I expect to see a link to "Delete"
-    When I click the "Delete" link
+    And I expect to see a link to "Destroy"
+    When I click the "Destroy" link
     Then I am at my customer show page
     And I expect to see content "Visit deleted."
     

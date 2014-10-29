@@ -38,6 +38,13 @@ class VisitsController < ApplicationController
     end
   end
   
+  def destroy
+    @visit.destroy
+    respond_to do |format|
+      format.html { redirect_to [@business, @customer], notice: 'Visit deleted.' }
+    end  
+  end
+  
 
 
   private
