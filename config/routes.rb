@@ -9,6 +9,7 @@ Mightysmalls::Application.routes.draw do
 
   resources :businesses do
     resources :customers
+    resources :visits
   end
 
   resources :customers do

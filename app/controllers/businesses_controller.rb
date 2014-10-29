@@ -47,6 +47,7 @@ class BusinessesController < ApplicationController
 			format.html { redirect_to @owner, notice: 'You have deleted this registered business.' }
 		end
 	end
+	
 
 	private
 
