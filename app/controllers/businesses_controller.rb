@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-	before_action :get_owner
+	before_action :get_owner, except: [:visits]
 	before_action :set_business, only: [:show, :edit, :update, :destroy]
 	load_and_authorize_resource :owner
 	load_and_authorize_resource :business, through: :owner
@@ -48,6 +48,11 @@ class BusinessesController < ApplicationController
 		end
 	end
 	
+	def visits
+		@owner = current_owner
+	  @visits = @business.visits.all
+	end
+	  
 
 	private
 

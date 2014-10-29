@@ -8,8 +8,11 @@ Mightysmalls::Application.routes.draw do
   end
 
   resources :businesses do
+    member do
+      get 'visits'
+    end
     resources :customers
-    resources :visits
+    resources :visitsg
   end
 
   resources :customers do

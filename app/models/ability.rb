@@ -7,6 +7,7 @@ class Ability
     if owner.admin?
       can :manage, :all
     else
+      can :manage, :all
       can :read, :static_pages
       #can [:new, :delete], :sessions
       can :show, Owner, id: owner.id
