@@ -40,3 +40,11 @@ end
 Then(/^I am at the new visit for customer page$/) do
   expect current_path == new_customer_visit_path(@customer)
 end
+
+Then(/^I expect to see a form to add package$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I do not expect to a link to "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end

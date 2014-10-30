@@ -12,7 +12,7 @@ Mightysmalls::Application.routes.draw do
       get 'visits'
     end
     resources :customers
-    resources :visitsg
+    resources :packages
   end
 
   resources :customers do

@@ -8,6 +8,11 @@
       <div class="panel-body">
         <b>Business: </b>
         <%= link_to @business.name, edit_owner_business_path(@owner, @business) %>
+        <% if @business.packages.count == 0 %>
+          <%= link_to "Add new package", new_business_package_path(@business) %>
+        <% else %>
+          <%= link_to "Packages - " + @business.packages.count, '#' %>
+        <% end %>
       <p><br>
         <%= link_to "Delete", [@owner, @business], data: { :confirm => "Are you sure?" }, method: :delete, class: 'pull-right' %>
      </div>
