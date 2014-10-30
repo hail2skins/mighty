@@ -67,7 +67,7 @@ gem 'annotate', group: :development
 
 gem 'simple_form'
 
-gem 'jquery-datatables-rails', '~> 2.2.3', git: 'https://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-datatables-rails', '~> 2.2.3'
 
 gem 'bundler'
 
