@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-	before_action :get_owner, except: [:visits]
+	before_action :get_owner
 	before_action :set_business, only: [:show, :edit, :update, :destroy]
 	load_and_authorize_resource :owner
 	load_and_authorize_resource :business, through: :owner
@@ -49,12 +49,15 @@ class BusinessesController < ApplicationController
 	end
 	
 	def visits
-		@owner = current_owner
 	  @visits = @business.visits.all
 	end
 	  
 
 	private
+
+			def get_owner
+				@owner = current_owner
+			end
 
 			def set_business
 				@business = @owner.businesses.find(params[:id])
@@ -62,10 +65,6 @@ class BusinessesController < ApplicationController
 
 			def business_params
 				params.require(:business).permit(:name, :description, :selected)
-			end
-
-			def get_owner
-				@owner = Owner.find(params[:owner_id])
 			end
 
 			def update_selected

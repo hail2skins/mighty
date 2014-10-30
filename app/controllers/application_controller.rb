@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   def current_ability
   	@current_ability ||= Ability.new(current_owner)
   end
+  
+rescue_from CanCan::AccessDenied do |exception|
+  Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+  # ...
+end
 
   #supplied method by device
   def after_sign_in_path_for(resource)

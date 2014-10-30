@@ -23,6 +23,7 @@ Feature: Business shows visits
     And I expect to see content "10/24/2014"
     And I expect to see a link to "Edit"
     And I expect to see a link to "Destroy"
+    And I expect to see a link to "Return to main business page"
 
 
 
