@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
 		@customer = @business.customers.new(customer_params)
 
 		respond_to do |format|
-			if @business.save
+			if @customer.save
 				format.html { redirect_to owner_business_path(@owner, @business), notice: "Customer added." }
 			else
 				format.html { render action: 'new' }

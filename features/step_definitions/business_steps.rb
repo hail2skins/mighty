@@ -42,9 +42,15 @@ Then(/^I am at the new visit for customer page$/) do
 end
 
 Then(/^I expect to see a form to add package$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_css('form', text: "")
 end
 
 Then(/^I do not expect to a link to "(.*?)"$/) do |arg1|
   pending # express the regexp above with the code you wish you had
+end
+
+When(/^I select date from "(.*?)" date selector$/) do |select|
+  page.select 'October', from: "#{select}_date_purchased_2i"
+  page.select '24', from: "#{select}_date_purchased_3i"
+  page.select '2014', from: "#{select}_date_purchased_1i"
 end
