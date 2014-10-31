@@ -45,8 +45,8 @@ Then(/^I expect to see a form to add package$/) do
   expect(page).to have_css('form', text: "")
 end
 
-Then(/^I do not expect to a link to "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I do not expect to a link to "(.*?)"$/) do |link|
+  expect(page).to_not have_link(link)
 end
 
 When(/^I select date from "(.*?)" date selector$/) do |select|
