@@ -29,3 +29,13 @@ Feature: Business creates package
     And I expect to see a link to "Packages - 1"
     But I do not expect to a link to "Add new package"
     
+  Scenario: Create a new package but test all fields are correct
+    Then I am at my business profile page
+    And I expect to see a link to "Add new package"
+    When I click the "Add new package" link
+    Then I click the "Create Package" button
+    And I expect to see content "2 errors prohibited this package from being saved:"
+    And I expect to see content "Package Name can't be blank."
+    And I expect to see content "Number of visits in package can't be blank."
+
+    
