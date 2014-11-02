@@ -47,7 +47,7 @@
                         <td><% if @customer.visits.count > 0 %>
                                   <%= link_to @customer.visits.last.date_of_visit.strftime("%m/%d/%Y"), [@customer, @visit] %>
                             <% else %>
-                                  "None Recorded"
+                                  None Recorded
                             <% end %>
                         </td>
                       </tr>
