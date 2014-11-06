@@ -69,3 +69,8 @@ end
    @business.customers.first.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
    @business.customers.last.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
  end
+ 
+ Given(/^I have created one package$/) do
+  @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6")
+end
+ 

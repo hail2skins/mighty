@@ -9,6 +9,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  owner_id    :integer
+#  selected    :boolean          default(FALSE)
 #
 
 class Business < ActiveRecord::Base

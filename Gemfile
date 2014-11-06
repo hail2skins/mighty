@@ -94,4 +94,4 @@ gem 'cancancan', '~> 1.7'
 
 gem 'paranoia', '~> 2.0'
 
-ruby "2.1.3"
+ruby "2.1.4"

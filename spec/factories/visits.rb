@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: visits
+#
+#  id            :integer          not null, primary key
+#  visit_notes   :text
+#  date_of_visit :date
+#  customer_id   :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  business_id   :integer
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do

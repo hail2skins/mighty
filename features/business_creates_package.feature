@@ -19,11 +19,9 @@ Feature: Business creates package
     And I expect to see content "Package Name"
     And I expect to see content "Description"
     And I expect to see content "Number of visits in package?"
-    And I expect to see content "Date purchased"
     When I fill in "Package Name" with "Large Package"
     And I fill in "Description" with "Package for customers buying a larger package."
     And I fill in "Number of visits in package" with "6"
-    And I select date from "package" date selector
     When I click the "Create Package" button
     Then I am at my business profile page
     And I expect to see a link to "Packages - 1"

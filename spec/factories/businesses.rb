@@ -9,7 +9,9 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  owner_id    :integer
+#  selected    :boolean          default(FALSE)
 #
+
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 

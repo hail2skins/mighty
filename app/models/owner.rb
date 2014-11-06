@@ -29,6 +29,7 @@
 #  deleted_at             :datetime
 #
 
+
 class Owner < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
