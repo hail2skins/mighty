@@ -2,6 +2,10 @@ class PackagesController < ApplicationController
   
   before_action :get_business_and_owner
   
+  def index
+    @packages = @business.packages.all
+  end
+  
   def new
     @package = @business.packages.build
   end
