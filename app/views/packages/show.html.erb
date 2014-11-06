@@ -1,0 +1,35 @@
+<%= provide(:title, "Package Details") %>
+<div class="row">
+  <div class="col-md-6 col-lg-6">
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= "Package Details for #{@package.name}" %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-10 col-lg-10">
+          <table class="table table-package-information">
+            <tbody>
+              <tr>
+                <td>Package Name:</td>
+                <td><%= @package.name %></td>
+              </tr>
+              <tr>
+                <td>Description:</td>
+                <td><%= @package.description %></td>
+              </tr>
+              <tr>
+                <td>Package count:</td>
+                <td><%= @package.count %></td>
+              </tr>
+            </tbody>
+          </table>
+          <%= link_to "Edit this visit", '#' %> |
+          <%= link_to "Delete this visit", '#', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+    <%= link_to "Return to main business page", [@owner, @business] %>
+   </div> 
+    
+</div>

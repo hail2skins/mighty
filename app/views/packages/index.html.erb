@@ -15,7 +15,7 @@
   <tbody>
     <% @packages.each do |package| %>
       <tr>
-        <td><%= link_to package.name, '#' %></td>
+        <td><%= link_to package.name, [@business, package] %></td>
         <td><%= package.description %></td>
         <td><%= package.count %></td>
         <td><%= link_to 'Show', '#' %></td>

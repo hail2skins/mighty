@@ -1,6 +1,7 @@
 class PackagesController < ApplicationController
   
   before_action :get_business_and_owner
+  before_action :set_package, only: [ :show, :edit, :update, :destroy ]
   
   def index
     @packages = @business.packages.all
@@ -21,6 +22,10 @@ class PackagesController < ApplicationController
       end
     end
   end
+  
+  def show
+  end
+
 
 
 
@@ -28,6 +33,10 @@ class PackagesController < ApplicationController
       def get_business_and_owner
         @business = Business.find(params[:business_id])
         @owner = @business.owner
+      end
+      
+      def set_package
+        @package = @business.packages.find(params[:id])
       end
       
       def package_params
