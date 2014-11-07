@@ -24,8 +24,8 @@
               </tr>
             </tbody>
           </table>
-          <%= link_to "Edit this visit", '#' %> |
-          <%= link_to "Delete this visit", '#', method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Edit this package", edit_business_package_path(@business, @package) %> |
+          <%= link_to "Delete this package", [@business, @package], method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>

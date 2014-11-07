@@ -39,6 +39,13 @@ class PackagesController < ApplicationController
     end
   end
 
+  def destroy
+    @package.destroy
+    respond_to do |format|
+      format.html { redirect_to [@owner, @business], notice: 'Package deleted.' }
+    end  
+  end
+  
 
   private
       def get_business_and_owner

@@ -54,3 +54,8 @@ When(/^I select date from "(.*?)" date selector$/) do |select|
   page.select '24', from: "#{select}_date_purchased_3i"
   page.select '2014', from: "#{select}_date_purchased_1i"
 end
+
+Then(/^I am at my business package show page$/) do
+  @package = @business.packages.first
+  expect current_path == business_package_path(@business, @package)
+end
