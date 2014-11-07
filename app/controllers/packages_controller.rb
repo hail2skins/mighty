@@ -25,8 +25,19 @@ class PackagesController < ApplicationController
   
   def show
   end
+  
+  def edit
+  end
 
-
+  def update
+    respond_to do |format|
+      if @package.update(package_params)
+        format.html { redirect_to [@owner, @business], notice: "Package updated." }
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
 
 
   private

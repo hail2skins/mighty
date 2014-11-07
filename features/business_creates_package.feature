@@ -24,6 +24,7 @@ Feature: Business creates package
     And I fill in "Number of visits in package" with "6"
     When I click the "Create Package" button
     Then I am at my business profile page
+    And I expect to see content "Package added."
     And I expect to see a link to "Packages - 1"
     But I do not expect to a link to "Add new package"
     
