@@ -15,7 +15,7 @@ Feature: Customer creates package
     Then I am at my business profile page
     And I expect to see a link to "Art"
     When I click the "Art" link
-    Then I am at my customer profile page
+    Then I am at my customer show page
     And I expect to see a link to "Purchase a package?"
     When I click the "Purchase a package?" link
     
