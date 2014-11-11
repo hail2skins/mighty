@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106043049) do
+ActiveRecord::Schema.define(version: 20141111194203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,19 @@ ActiveRecord::Schema.define(version: 20141106043049) do
   end
 
   add_index "phones", ["phoneable_type", "phoneable_id"], name: "index_phones_on_phoneable_type_and_phoneable_id", using: :btree
+
+  create_table "purchased_packages", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "business_id"
+    t.date     "date_purchased"
+    t.date     "date_completed"
+    t.integer  "used_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchased_packages", ["business_id"], name: "index_purchased_packages_on_business_id", using: :btree
+  add_index "purchased_packages", ["customer_id"], name: "index_purchased_packages_on_customer_id", using: :btree
 
   create_table "visits", force: true do |t|
     t.text     "visit_notes"

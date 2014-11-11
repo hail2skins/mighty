@@ -22,3 +22,7 @@ end
 Then(/^I expect to see a form to edit visit$/) do
   expect(page).to have_css('form', text: "")
 end
+
+Then(/^I expect to see a form to select a package$/) do
+  pending # express the regexp above with the code you wish you had
+end
