@@ -21,8 +21,9 @@ class Business < ActiveRecord::Base
 
 	has_many :customers, dependent: :destroy
   has_many :visits, through: :customers
-  
+ 
   has_many :packages
+  has_many :deals, through: :customers
 
 	validates :owner_id, presence: true
 	validates :name, presence: true

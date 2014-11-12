@@ -1,6 +1,5 @@
 Mightysmalls::Application.routes.draw do
 
-
   devise_for :owners, controllers: { registrations: :registrations }
   
   resources :owners do
@@ -17,6 +16,7 @@ Mightysmalls::Application.routes.draw do
 
   resources :customers do
     resources :visits
+    resources :deals
   end
 
   devise_scope :owner do
