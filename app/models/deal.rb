@@ -1,4 +1,9 @@
 class Deal < ActiveRecord::Base
   belongs_to :customer
-  has_one :package, through: :business
+  belongs_to :business
+  has_one :package
+  
+  accepts_nested_attributes_for :package
+  
+
 end

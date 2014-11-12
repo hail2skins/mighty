@@ -6,7 +6,8 @@ class DealsController < ApplicationController
   end
 
   def new
-    
+    @deal = @customer.deals.new
+
   end
 
   def create
