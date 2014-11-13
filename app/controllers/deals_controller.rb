@@ -1,6 +1,5 @@
 class DealsController < ApplicationController
   before_action :get_customer_business_and_owner
-  #after_action :set_package_and_update, only: :create
 
   def index
   end

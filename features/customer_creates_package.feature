@@ -10,8 +10,6 @@ Feature: Customer creates package
     And I have created one package
     Then I logout
     When I login with valid credentials
-
-  Scenario: Adding a package to a customer from the main customer profile page
     Then I am at my business profile page
     And I expect to see a link to "Art"
     When I click the "Art" link
@@ -20,6 +18,24 @@ Feature: Customer creates package
     When I click the "Purchase a package?" link
     Then I expect to see the title "Pick a package"
     And I expect to see content "Pick a package"
-    And I expect to see a form to select a package
+    And I expect to see content "Date purchased"
+    And I expect to see content "Package"
+
+  Scenario: Adding a package to a customer from the main customer profile page
+
+    When I select date from "deal" date selector
+    And I select "First Customer Package" from "Package"
+    And I click the "Create Deal" button
+    Then I am at my customer show page
+    And I expect to see content "Package purchased for Art Mills"
+    
+  Scenario: Adding a package with validations
+    When I click the "Create Deal" button
+    Then I expect to see content "2 errors prohibited this package deal from being saved:"
+    And I expect to see content "Date purchased can't be blank"
+    And I expect to see content "Package can't be blank"
+    
+    
+    
     
     

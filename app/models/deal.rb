@@ -5,7 +5,9 @@ class Deal < ActiveRecord::Base
   
   accepts_nested_attributes_for :package
   
+  validates_presence_of :date_purchased  
   validates_presence_of :package_id
+
   
 
 end
