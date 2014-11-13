@@ -27,6 +27,10 @@ Feature: Business creates package
     And I expect to see content "Package added."
     And I expect to see a link to "Packages - 1"
     But I do not expect to a link to "Add new package"
+    When I click the "Packages - 1" link
+    Then I expect to see a link to "Create another package"
+    When I click the "Create another package" link
+    Then I am at the new package page
     
   Scenario: Create a new package but test all fields are correct
     Then I am at my business profile page

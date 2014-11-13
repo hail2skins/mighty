@@ -1,13 +1,12 @@
 class DealsController < ApplicationController
   before_action :get_customer_business_and_owner
-  after_action :get_package, only: :create
-  
+  #after_action :set_package_and_update, only: :create
+
   def index
   end
 
   def new
     @deal = @customer.deals.build
-
   end
 
   def create
@@ -15,7 +14,8 @@ class DealsController < ApplicationController
  
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to [@owner, @business], notice: "Package purchased for " + @customer.name }
+        set_package_and_update
+        format.html { redirect_to [@business, @customer], notice: "Package purchased for " + @customer.name }
       else
         format.html { render action: 'new' }
       end
@@ -37,9 +37,10 @@ class DealsController < ApplicationController
         @owner = @business.owner
       end
       
-      def get_package
-        @package = Package.first
-       	@deal.update_attribute(:used_count, @package.count)
+      def set_package_and_update
+        @package = @deal.package
+        @deal.update_attribute(:used_count, @package.count)
+        @deal.update_attribute(:business_id, @business.id)
       end
       
 end

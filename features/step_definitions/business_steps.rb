@@ -59,3 +59,7 @@ Then(/^I am at my business package show page$/) do
   @package = @business.packages.first
   expect current_path == business_package_path(@business, @package)
 end
+
+Then(/^I am at the new package page$/) do
+  expect current_path == new_business_package_path(@business)
+end
