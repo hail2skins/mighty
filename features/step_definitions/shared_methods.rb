@@ -61,8 +61,8 @@ def create_business_form
 end
 
 def create_two_customers
-  @business.customers.create!(first_name: "David", last_name: "Michael", email: "david@email.com", phones_attributes: [number: "6122222222"])
   @business.customers.create!(first_name: "Art", last_name: "Mills", email: "art@email.com", phones_attributes: [number: "6123333333"])
+  @business.customers.create!(first_name: "David", last_name: "Michael", email: "david@email.com", phones_attributes: [number: "6122222222"])
 end
 
  Given(/^I have created a visit for each customer$/) do
@@ -72,5 +72,10 @@ end
  
  Given(/^I have created one package$/) do
   @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6")
+end
+
+Given(/^I have created one deal$/) do
+  @customer = Customer.first
+  @customer.deals.create!(date_purchased: "2014-11-13", business_id: 1, package_id: 1, used_count: 6)
 end
  
