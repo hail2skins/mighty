@@ -15,20 +15,31 @@ Feature: Customer shows package
     And I expect to see a link to "Art"
     When I click the "Art" link
     Then I am at my customer show page
-    And I expect to see a link to "Packages in progress: 1"
-    And I expect to see a link to "Purchase another package?"
+    And I expect to see content "Packages in progress: 1"
+    And I expect to see a link to "Packages in progress:"
+    And I expect to see a link to "My Package History"
 
-
-  Scenario: Adding a package to a customer from the main customer profile page
-
-    When I select date from "deal" date selector
-    And I select "First Customer Package" from "Package"
-    And I click the "Create Deal" button
-    Then I am at my customer show page
-    And I expect to see content "Package purchased for Art Mills"
+  Scenario: Viewing a package from the Packages in Progress link
+    When I click the "Packages in progress:" link
+    Then I expect to see the title "Packages for Art Mills"
+    And I expect to see content "Packages for Art Mills"
+    And I expect to see content "Package Name"
+    And I expect to see content "Date Purchased"
+    And I expect to see content "Remaining Visits"
+    And I expect to see content "Date Completed"
+    And I expect to see content "First Customer Package"
+    And I expect to see content "11/13/2014"
+    And I expect to see content "6"
+    And I expect to see a link to "Purchase another package"
+    And I expect to see a link to "Show Details"
+    When I click the "Show Details" link
+    Then I expect to see the title "Package Details"
+    And I expect to see content "Package Details"
+    And I expect to see content "Package Name"
+    And I expect to see content "Date Purchased"
+    And I expect to see content "Remaining Visits"
+    And I expect to see content "Date Completed"
+    And I expect to see content "First Customer Package"
+    And I expect to see content "11/13/2014"
+    And I expect to see content "6"    
     
-  Scenario: Adding a package with validations
-    When I click the "Create Deal" button
-    Then I expect to see content "2 errors prohibited this package deal from being saved:"
-    And I expect to see content "Date purchased can't be blank"
-    And I expect to see content "Package can't be blank"

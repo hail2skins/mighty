@@ -57,6 +57,23 @@
 
 
                       </tr>
+                      
+                      <tr>
+                        <% if @customer.active_deals.count == 0 %>
+                          <td><%= link_to "Purchase a package?", new_customer_deal_path(@customer) %> </td>
+                          <td></td>
+                        <% else %>
+                          <td><%= link_to "Packages in progress:", customer_deals_path(@customer) %></td>
+                          <td><%= link_to @customer.active_deals.count, customer_deals_path(@customer) %></td>
+                        <% end %>
+                      </tr>
+
+                      <tr>
+                        <% if @customer.completed_deals.count > 0 %>
+                          <td>Completed packages:</td>
+                          <td><%= link_to @customer.completed_deals.count, customer_deals_path(@customer) %></td>
+                        <% end %>
+                      </tr>      
 
                       <tr>
                         <td>Phone Numbers:</td>
@@ -67,16 +84,13 @@
                            
                       </tr>
                       
-                      <tr>
-                        <td><%= link_to "Purchase a package?", new_customer_deal_path(@customer) %> </td>
-                        
-                      </tr>
-                     
                     </tbody>
                   </table>
                   
                   <%= link_to 'My Visit History', customer_visits_path(@customer), class: 'btn btn-primary' %>
-                  <a href="#" class="btn btn-primary">Placeholder</a>
+                  <% if @customer.deals.count > 0 %>
+                    <%= link_to 'My Package History', '#', class: 'btn btn-primary' %>
+                  <% end %>
                 </div>
               </div>
             </div>

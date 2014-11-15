@@ -2,8 +2,9 @@ class DealsController < ApplicationController
   before_action :get_customer_business_and_owner
 
   def index
+    @deals = @customer.deals.all
   end
-
+  
   def new
     @deal = @customer.deals.build
   end
@@ -40,6 +41,11 @@ class DealsController < ApplicationController
         @package = @deal.package
         @deal.update_attribute(:used_count, @package.count)
         @deal.update_attribute(:business_id, @business.id)
+        set_active_state
+      end
+      
+      def set_active_state
+        @deal.update_attribute(:active, true) unless @deal.used_count == 0
       end
       
 end

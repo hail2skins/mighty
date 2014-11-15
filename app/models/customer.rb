@@ -35,5 +35,12 @@ class Customer < ActiveRecord::Base
   def name
   	"#{first_name} #{last_name}".to_s
   end
+  
+  def active_deals
+    self.deals.where(active: true)
+  end
 
+  def completed_deals
+    self.deals.where(active: false)
+  end
 end

@@ -76,6 +76,9 @@ end
 
 Given(/^I have created one deal$/) do
   @customer = Customer.first
-  @customer.deals.create!(date_purchased: "2014-11-13", business_id: 1, package_id: 1, used_count: 6)
+  @package = Business.first.packages.first
+  @customer.deals.new(date_purchased: "2014-11-13", business_id: 1, used_count: 6, active: true)
+  @customer.deals.first.update_attribute(:package_id, @package.id)
+  @customer.deals.first.save
 end
  
