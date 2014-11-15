@@ -19,9 +19,13 @@
         <td><%= deal.package.name %></td>
         <td><%= deal.date_purchased.strftime("%m/%d/%Y") %></td>
         <td><%= deal.used_count %></td>
-        <td><%= deal.date_completed %></td>
+        <% if !deal.date_completed? %>
+          <td></td>
+        <% else %>
+          <td><%= deal.date_completed.strftime("%m/%d/%Y") %></td>
+        <% end %>
         <td><%= link_to 'Show Details', [@customer, deal] %></td>
-        <td><%= link_to 'Edit', '#' %></td>
+        <td><%= link_to 'Edit', edit_customer_deal_path(@customer, deal) %></td>
         <td><%= link_to 'Destroy', [@customer, deal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

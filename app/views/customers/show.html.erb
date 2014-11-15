@@ -89,7 +89,7 @@
                   
                   <%= link_to 'My Visit History', customer_visits_path(@customer), class: 'btn btn-primary' %>
                   <% if @customer.deals.count > 0 %>
-                    <%= link_to 'My Package History', '#', class: 'btn btn-primary' %>
+                    <%= link_to 'My Package History', customer_deals_path(@customer), class: 'btn btn-primary' %>
                   <% end %>
                 </div>
               </div>

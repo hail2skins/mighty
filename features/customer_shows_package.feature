@@ -43,3 +43,26 @@ Feature: Customer shows package
     And I expect to see content "11/13/2014"
     And I expect to see content "6"    
     
+  Scenario: Viewing a package from the My Package History button
+    When I click the "My Package History" link
+    Then I expect to see the title "Packages for Art Mills"
+    And I expect to see content "Packages for Art Mills"
+    And I expect to see content "Package Name"
+    And I expect to see content "Date Purchased"
+    And I expect to see content "Remaining Visits"
+    And I expect to see content "Date Completed"
+    And I expect to see content "First Customer Package"
+    And I expect to see content "11/13/2014"
+    And I expect to see content "6"
+    And I expect to see a link to "Purchase another package"
+    And I expect to see a link to "Show Details"
+    When I click the "Show Details" link
+    Then I expect to see the title "Package Details"
+    And I expect to see content "Package Details"
+    And I expect to see content "Package Name"
+    And I expect to see content "Date Purchased"
+    And I expect to see content "Remaining Visits"
+    And I expect to see content "Date Completed"
+    And I expect to see content "First Customer Package"
+    And I expect to see content "11/13/2014"
+    And I expect to see content "6"       

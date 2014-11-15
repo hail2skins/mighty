@@ -26,3 +26,11 @@ end
 When(/^I select "(.*?)" from "(.*?)"$/) do |option, select|
   select(option, from: select)
 end
+
+Then(/^I do not expect to see content "(.*?)"$/) do |content|
+  expect(page).to_not have_content(content)
+end
+
+Then(/^I expect to see today's date$/) do
+  expect(page).to have_content(Date.today.strftime("%m/%d/%Y"))
+end
