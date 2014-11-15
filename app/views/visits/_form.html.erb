@@ -20,7 +20,14 @@
         <%= f.label :date_of_visit %><br />
         <%= f.date_select :date_of_visit, order: [:month, :day, :year] %>
     </div>
-
+    
+    <% if @customer.deals.where(active: true).count == 1 %>
+    <div class="field">
+        <%= f.label :deal_visit, "Is this a special deal visit?" %>
+        <%= f.check_box :deal_visit, checked: true %>
+    </div>
+    <% end %>
+    
     <div class="actions">
       <%= f.submit %>
     </div>

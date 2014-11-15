@@ -18,6 +18,15 @@ class VisitsController < ApplicationController
 
     respond_to do |format|
       if @visit.save
+        if @visit.deal_visit == true
+          if @customer.deals.where(active: true).first.used_count >= 2
+            @customer.deals.where(active: true).first.decrement!(:used_count)
+          elsif @customer.deals.where(active: true).first.used_count == 1
+            @customer.deals.where(active: true).first.decrement!(:used_count)
+            @customer.deals.where(active: true).first.update_attribute(:date_completed, @visit.date_of_visit)
+            @customer.deals.where(active: true).first.update_attribute(:active, false)
+          end
+        end
         format.html { redirect_to [@owner, @business], notice: "Visit added for " + @customer.name }
       else
         format.html { render action: 'new' }
@@ -54,7 +63,7 @@ class VisitsController < ApplicationController
       end
 
       def visit_params
-        params.require(:visit).permit(:visit_notes, :date_of_visit, :customer_id)
+        params.require(:visit).permit(:visit_notes, :date_of_visit, :customer_id, :deal_id, :deal_visit)
       end
 
       def get_customer_business_and_owner
