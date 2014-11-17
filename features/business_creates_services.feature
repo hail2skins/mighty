@@ -4,9 +4,11 @@ Feature: Business creates services
 	I can create as an owner to have available
 
 	Background: Logging in with a business
-		Given I am logged in
-	  And I am at my owner profile page
+	  Given I am logged in
 	  And I have created one business
+	  And I have created two customers
+    Then I logout
+    When I login with valid credentials
 
 	  Scenario: Creating a service
 	  	And I should see content "Services Information"

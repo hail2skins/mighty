@@ -18,15 +18,7 @@ class VisitsController < ApplicationController
 
     respond_to do |format|
       if @visit.save
-        if @visit.deal_visit == true
-          if @customer.deals.where(active: true).first.used_count >= 2
-            @customer.deals.where(active: true).first.decrement!(:used_count)
-          elsif @customer.deals.where(active: true).first.used_count == 1
-            @customer.deals.where(active: true).first.decrement!(:used_count)
-            @customer.deals.where(active: true).first.update_attribute(:date_completed, @visit.date_of_visit)
-            @customer.deals.where(active: true).first.update_attribute(:active, false)
-          end
-        end
+        find_active_deal
         format.html { redirect_to [@owner, @business], notice: "Visit added for " + @customer.name }
       else
         format.html { render action: 'new' }
@@ -70,5 +62,17 @@ class VisitsController < ApplicationController
         @customer = Customer.find(params[:customer_id])
         @business = @customer.business
         @owner = @business.owner
+      end
+      
+      def find_active_deal
+        if @visit.deal_visit == true
+          if active_deal.first.used_count >= 2
+            active_deal.first.decrement!(:used_count)
+          elsif @customer.deals.where(active: true).first.used_count == 1
+            active_deal.first.decrement!(:used_count)
+            active_deal.first.update_attribute(:date_completed, @visit.date_of_visit)
+            active_deal.first.update_attribute(:active, false)
+          end
+        end
       end
 end

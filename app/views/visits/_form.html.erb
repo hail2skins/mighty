@@ -24,6 +24,16 @@
     <% if @customer.deals.where(active: true).count == 1 %>
     <div class="field">
         <%= f.label :deal_visit, "Is this a special deal visit?" %>
+        <% if @visit.deal_visit == true %>
+            <%= f.check_box :deal_visit, checked: true %>
+        <% else %>  
+            <%= f.check_box :deal_visit, checked: false %>
+        <% end %>
+ 
+    </div>
+    <% elsif @visit.deal_visit == true %>
+    <div class="field">
+        <%= f.label :deal_visit, "Is this a special deal visit?" %>
         <%= f.check_box :deal_visit, checked: true %>
     </div>
     <% end %>

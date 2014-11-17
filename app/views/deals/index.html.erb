@@ -33,4 +33,6 @@
 </table>
 
 <br>
-    <%= link_to "Purchase another package", new_customer_deal_path(@customer) %> | <%= link_to "Return to main business page", [@owner, @business] %>
+    <%= link_to "Purchase another package", new_customer_deal_path(@customer) %> | 
+    <%= link_to "Return to main business page", [@owner, @business] %> |
+    <%= link_to "Return to customer page", [@business, @customer] %>

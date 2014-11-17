@@ -81,4 +81,8 @@ Given(/^I have created one deal$/) do
   @customer.deals.first.update_attribute(:package_id, @package.id)
   @customer.deals.first.save
 end
+
+Given(/^I have created one visit$/) do
+  @customer.visits.create!(visit_notes: "Hello", date_of_visit: "2014-11-10")
+end
  

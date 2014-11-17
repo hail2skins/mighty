@@ -20,3 +20,7 @@ class Visit < ActiveRecord::Base
   validates_presence_of :date_of_visit
   #validates :date_of_visit, date: true   NOT NEEDED as field itself validates well.  I think.
 end
+
+def active_deal
+  @customer.deals.where(active: true)
+end
