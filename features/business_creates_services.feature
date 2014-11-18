@@ -15,4 +15,3 @@ Feature: Business creates services
 	  	And I should see content "Please tell us what types of services your business provides."
 	  	And I should see a link to "Add a service your business provides now!"
 	  	When I click the "Add a service your business provides now!" link
-	  	Then I am at the create new service page
