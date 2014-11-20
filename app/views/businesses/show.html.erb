@@ -16,6 +16,27 @@
       <p><br>
         <%= link_to "Delete", [@owner, @business], data: { :confirm => "Are you sure?" }, method: :delete, class: 'pull-right' %>
      </div>
+     
+     <% if @business.services.count == 0 %>
+     <div class="panel panel-danger">
+       <div class="panel-heading">
+         <b>Services Information</b><%= link_to "Add", '#', class: 'pull-right' %>
+       </div>
+       <div class="panel-body">
+         <p>Please tell us what types of services your business provides.</p>
+         <%= link_to "Add a service your business provides now!", '#' %>
+       </div>
+     </div>
+     <% else %>
+     <div class='panel panel-success'>
+       <div class="panel-heading">
+         <b>Services Information</b><%= link_to "Add", '#', class: 'pull-right' %>
+       </div>
+       <div class="panel-body">
+         Number of services: <%= link_to @business.services.count, '#' %>
+       </div>
+     </div>
+     <% end %>
 
     <% if @business.customers.count >= 1 %>
     

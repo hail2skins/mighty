@@ -24,6 +24,8 @@ class Business < ActiveRecord::Base
  
   has_many :packages
   has_many :deals, through: :customers
+  
+  has_many :services
 
 	validates :owner_id, presence: true
 	validates :name, presence: true
