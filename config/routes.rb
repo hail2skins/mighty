@@ -12,6 +12,7 @@ Mightysmalls::Application.routes.draw do
     end
     resources :customers
     resources :packages
+    resources :services
   end
 
   resources :customers do

@@ -85,4 +85,9 @@ end
 Given(/^I have created one visit$/) do
   @customer.visits.create!(visit_notes: "Hello", date_of_visit: "2014-11-10")
 end
+
+Given(/^I have created two services$/) do
+  @business.services.create!(name: "Microderm", prices_attributes: [amount: 125])
+  @business.services.create!(name: "Facial", prices_attributes: [amount: 49.95])
+end
  

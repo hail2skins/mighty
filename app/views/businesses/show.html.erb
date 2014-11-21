@@ -20,32 +20,33 @@
      <% if @business.services.count == 0 %>
      <div class="panel panel-danger">
        <div class="panel-heading">
-         <b>Services Information</b><%= link_to "Add", '#', class: 'pull-right' %>
+         <b>Services Information</b><%= link_to "Add", new_business_service_path(@business), class: 'pull-right' %>
        </div>
        <div class="panel-body">
          <p>Please tell us what types of services your business provides.</p>
-         <%= link_to "Add a service your business provides now!", '#' %>
+         <%= link_to "Add a service your business provides now!", new_business_service_path(@business) %>
        </div>
      </div>
      <% else %>
      <div class='panel panel-success'>
        <div class="panel-heading">
-         <b>Services Information</b><%= link_to "Add", '#', class: 'pull-right' %>
+         <b>Services Information</b><%= link_to "Add", new_business_service_path(@business), class: 'pull-right' %>
        </div>
        <div class="panel-body">
-         Number of services: <%= link_to @business.services.count, '#' %>
+         <%= link_to "Number of services:", business_services_path(@business) %> <%= link_to @business.services.count, '#' %>
        </div>
      </div>
      <% end %>
 
     <% if @business.customers.count >= 1 %>
-    
+      <div class="panel panel-success">
       <div class="panel-heading">
         <b>Customer Information</b><%= link_to "Add", new_business_customer_path(@business), class: 'pull-right' %>
       </div>
       <div class="panel-body">
         <%= link_to "Customers: ", business_customers_path(@business) %><%= @business.customers.count %><br />
         <%= link_to "Total Customer Visits: " + @business.visits.count.to_s, visits_business_path(@business) %>
+      </div>
       </div>
       
     <% end %>

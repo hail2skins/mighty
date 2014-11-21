@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120063318) do
+ActiveRecord::Schema.define(version: 20141121024939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,10 +123,19 @@ ActiveRecord::Schema.define(version: 20141120063318) do
 
   add_index "phones", ["phoneable_type", "phoneable_id"], name: "index_phones_on_phoneable_type_and_phoneable_id", using: :btree
 
+  create_table "prices", force: true do |t|
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.integer  "cost_id"
+    t.string   "cost_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prices", ["cost_type", "cost_id"], name: "index_prices_on_cost_type_and_cost_id", unique: true, using: :btree
+
   create_table "services", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",       precision: 8, scale: 2
     t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
