@@ -25,7 +25,7 @@
             </tbody>
           </table>
           <%= link_to "New Service", new_business_service_path(@business) %> |
-          <%= link_to "Edit this service", '#' %> |
+          <%= link_to "Edit this service", edit_business_service_path(@business, @service) %> |
           <%= link_to "Delete this service", [@business, @service], method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>

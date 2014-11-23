@@ -20,7 +20,7 @@
             <% end %>
         </td>
         <td><%= link_to 'Show', [@business, service] %></td>
-        <td><%= link_to 'Edit', '#' %></td>
+        <td><%= link_to 'Edit', edit_business_service_path(@business, service) %></td>
         <td><%= link_to 'Destroy', [@business, service], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

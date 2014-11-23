@@ -1,7 +1,7 @@
-Feature: Business shows services
+Feature: Business edits services
 	In order to manage the business services for my business
 	as an owner of a business with services created
-	I can view each specific service or list of services
+	I can edit a service
 
 	Background: Logging in with a business
 	  Given I am logged in
@@ -11,7 +11,7 @@ Feature: Business shows services
 	  Then I logout
     When I login with valid credentials
 
-	  Scenario: Viewing a list of services then a single service
+	  Scenario: Editing services
 	    Then I am at my business profile page
       When I click the "Number of services:" link
       Then I expect to see the title "Services for My Great Business"
@@ -19,16 +19,20 @@ Feature: Business shows services
       And I expect to see content "Service name"
       And I expect to see content "Price"
       And I expect to see a link to "Microderm"
-      And I expect to see a link to "Facial"
-      And I expect to see content "$125"
-      And I expect to see content "$49.95"
-      And I expect to see a link to "New Service"
       When I click the "Microderm" link
-      Then I expect to see the title "Microderm service details"
-      And I expect to see content "Microderm service details"
-      And I expect to see content "Service name:"
-      And I expect to see content "Description:"
+      Then I expect to see a link to "Edit this service"
+      When I click the "Edit this service" link
+      Then I expect to see the title "Edit this service"
+      And I expect to see content "Edit this service"
+      And I expect to see content "Service name"
+      And I expect to see content "Description"
       And I expect to see content "Price"
-      And I expect to see a link to "New Service"
-      And I expect to see a link to "Back to service index"
-      And I expect to see a link to "Back to main business page"
+      When I fill in "Service name" with "Microderm Abrasian"
+      And I fill in "Price" with "140"
+      And I click the "Update Service" button
+      Then I expect to see content "Service updated."
+      And I am at my business profile page
+      When I click the "Number of services:" link
+      Then I expect to see content "Microderm Abrasian"
+      And I expect to see content "$140"
+      But I do not expect to see content "$125"
