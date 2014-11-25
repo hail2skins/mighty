@@ -32,13 +32,20 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to [@owner, @business], notice: "Service updated."}
+        format.html { redirect_to [@owner, @business], notice: "Service update."}
       else
         format.html { render action: 'edit' }
       end
     end
   end
   
+  def destroy
+    @service.destroy
+    respond_to do |format|
+      format.html { redirect_to [@business, @customer], notice: 'Service deleted.' }
+    end  
+  end
+      
   private
   
       def set_service

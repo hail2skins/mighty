@@ -9,6 +9,8 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  business_id   :integer
+#  deal_id       :integer
+#  deal_visit    :boolean          default(FALSE)
 #
 
 class Visit < ActiveRecord::Base

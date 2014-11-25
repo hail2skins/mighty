@@ -9,6 +9,8 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  business_id   :integer
+#  deal_id       :integer
+#  deal_visit    :boolean          default(FALSE)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
