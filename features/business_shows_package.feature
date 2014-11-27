@@ -19,6 +19,8 @@ Feature: Business shows package
     And I expect the page to have a table
     And I expect to see a link to "First Customer Package"
     And I expect to see content "First package for my customers."
+    And I expect to see content "Price"
+    And I expect to see content "$400"
     And I expect to see content "6"
     When I click the "First Customer Package" link
     Then I expect to see the title "Package Details"
@@ -26,4 +28,5 @@ Feature: Business shows package
     And I expect to see content "First package for my customers"
     And I expect to see content "Package count:"
     And I expect to see content "6"
+    And I expect to see content "Price: $400"
     

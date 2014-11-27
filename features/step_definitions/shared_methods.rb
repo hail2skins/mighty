@@ -71,7 +71,7 @@ end
  end
  
  Given(/^I have created one package$/) do
-  @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6")
+  @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6", prices_attributes: [amount: 400])
 end
 
 Given(/^I have created one deal$/) do

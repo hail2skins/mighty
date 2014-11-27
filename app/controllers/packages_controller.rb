@@ -9,6 +9,7 @@ class PackagesController < ApplicationController
   
   def new
     @package = @business.packages.build
+    @package.prices.build(params[:price])
   end
   
   def create
@@ -58,6 +59,6 @@ class PackagesController < ApplicationController
       end
       
       def package_params
-        params.require(:package).permit(:name, :description, :count, :date_purchased)
+        params.require(:package).permit(:name, :description, :count, :date_purchased, prices_attributes: [:id, :amount])
       end
 end

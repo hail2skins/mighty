@@ -32,7 +32,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to [@owner, @business], notice: "Service update."}
+        format.html { redirect_to [@owner, @business], notice: "Service updated."}
       else
         format.html { render action: 'edit' }
       end

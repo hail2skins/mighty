@@ -43,4 +43,3 @@ Feature: Visit creates deal
       But I do not expect to see content "Packages in progress:"
       When I click the "New visit for Art Mills" link
       Then I do not expect to see content "Is this a special deal visit?"
-

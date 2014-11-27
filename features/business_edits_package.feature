@@ -23,9 +23,11 @@ Feature: Business edits package
     And I expect to see content "Package Name"
     And I expect to see content "Description"
     And I expect to see content "Number of visits in package?"
+    And I expect to see content "Price"
     When I fill in "Package Name" with "Not So Large A Package"
     And I fill in "Description" with "Package for customers buying a kind of larger package."
     And I fill in "Number of visits in package" with "4"
+    And I fill in "Price" with "300"
     When I click the "Update Package" button
     Then I am at my business profile page
     And I expect to see content "Package updated."
@@ -34,4 +36,5 @@ Feature: Business edits package
     Then I expect to see content "Not So Large A Package"
     And I expect to see content "Package for customers buying a kind of larger package."
     And I expect to see content "Package count: 4"
+    And I expect to see content "$300"
     

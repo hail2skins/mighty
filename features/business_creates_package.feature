@@ -19,9 +19,11 @@ Feature: Business creates package
     And I expect to see content "Package Name"
     And I expect to see content "Description"
     And I expect to see content "Number of visits in package?"
+    And I expect to see content "Price"
     When I fill in "Package Name" with "Large Package"
     And I fill in "Description" with "Package for customers buying a larger package."
     And I fill in "Number of visits in package" with "6"
+    And I fill in "Price" with "$400"
     When I click the "Create Package" button
     Then I am at my business profile page
     And I expect to see content "Package added."
@@ -37,8 +39,9 @@ Feature: Business creates package
     And I expect to see a link to "Add new package"
     When I click the "Add new package" link
     Then I click the "Create Package" button
-    And I expect to see content "2 errors prohibited this package from being saved:"
+    And I expect to see content "3 errors prohibited this package from being saved:"
     And I expect to see content "Package Name can't be blank."
     And I expect to see content "Number of visits in package can't be blank."
+	  And I expect to see content "Prices amount can't be blank"
 
     
