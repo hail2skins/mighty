@@ -21,7 +21,7 @@
         <%= f.date_select :date_of_visit, order: [:month, :day, :year] %>
     </div>
     
-    <% if @customer.deals.where(active: true).count == 1 %>
+    <% if @customer.deals.where(active: true).count == 0 %>
     <div class="field">
         <%= f.label :deal_visit, "Is this a special deal visit?" %>
         <% if @visit.deal_visit == true %>

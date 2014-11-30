@@ -66,8 +66,10 @@ def create_two_customers
 end
 
  Given(/^I have created a visit for each customer$/) do
-   @business.customers.first.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
-   @business.customers.last.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
+   @customer1 = @business.customers.find_by_first_name("David")
+   @customer2 = @business.customers.find_by_first_name("Art")
+   @customer1.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
+   @customer2.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
  end
  
  Given(/^I have created one package$/) do
@@ -75,7 +77,7 @@ end
 end
 
 Given(/^I have created one deal$/) do
-  @customer = Customer.first
+  @customer = Customer.find_by_first_name("Art")
   @package = Business.first.packages.first
   @customer.deals.new(date_purchased: "2014-11-13", business_id: 1, used_count: 6, active: true)
   @customer.deals.first.update_attribute(:package_id, @package.id)
