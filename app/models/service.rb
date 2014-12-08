@@ -12,6 +12,7 @@
 
 class Service < ActiveRecord::Base
   belongs_to :business
+  belongs_to :package
   
   has_many :prices, as: :cost
   accepts_nested_attributes_for :prices

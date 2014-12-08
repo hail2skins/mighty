@@ -19,10 +19,12 @@ Feature: Business creates package
     And I expect to see content "Package Name"
     And I expect to see content "Description"
     And I expect to see content "Number of visits in package?"
+    And I expect to see content "Service provided?"
     And I expect to see content "Price"
     When I fill in "Package Name" with "Large Package"
     And I fill in "Description" with "Package for customers buying a larger package."
     And I fill in "Number of visits in package" with "6"
+    And I select "Microderm" from "Service provided?"
     And I fill in "Price" with "$400"
     When I click the "Create Package" button
     Then I am at my business profile page

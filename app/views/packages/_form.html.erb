@@ -26,6 +26,12 @@
         <%= f.text_field :count %>
     </div>
     
+    <div class="field">
+      <%= f.label :service_id, "Service provided?" %><br />
+      <%= f.collection_select(:service_id, @business.services.all, :id, :name, { include_blank: true }) %>
+      
+    </div>
+    
     <div>
       <%= f.fields_for :prices do |price| %>
         <%= render partial: 'prices/form', locals: { f: price } %>
