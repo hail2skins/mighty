@@ -27,7 +27,7 @@ Feature: Customer edits visit
     And I expect to see a link to "Back to business page"
     And I expect to see a link to "Back to customer view"
     And I expect to see content "Visit notes"
-    And I expect to see content "I'm David's customer and my skin is sensitive"
+    And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "Date of visit"
     When I fill in "Visit notes" with "Art is so cute."
     And I click the "Update Visit" button

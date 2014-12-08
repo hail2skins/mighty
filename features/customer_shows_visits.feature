@@ -21,7 +21,7 @@ Feature: Customer shows visits
     When I click the "10/24/2014" link
     Then I expect to see the title "View visit for Art Mills"
     And I expect to see content "Visit notes:"
-    And I expect to see content "I'm David's customer and my skin is sensitive"
+    And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "Date of visit:"
     And I expect to see content "10/24/2014"
     And I expect to see a link to "Return to customer page"
@@ -36,7 +36,7 @@ Feature: Customer shows visits
     And I expect to see content "Visit history for Art Mills"
     And I expect to see content "Visit notes"
     And I expect to see content "Date of visit"
-    And I expect to see content "I'm David's customer and my skin is sensitive"
+    And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "10/24/2014"
     And I expect to see a link to "Show"
     And I expect to see a link to "Return to customer page"
