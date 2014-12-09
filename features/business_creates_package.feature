@@ -6,6 +6,7 @@ Feature: Business creates package
   Background: Logging in with a business
     Given I am logged in
     And I have created one business
+    And I have created two services
     Then I logout
     When I login with valid credentials
 
