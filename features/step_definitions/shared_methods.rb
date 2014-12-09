@@ -71,9 +71,17 @@ end
    @customer1.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
    @customer2.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
  end
+
+Given(/^I have created two services$/) do
+  @business.services.create!(name: "Microderm", prices_attributes: [amount: 125])
+  @business.services.create!(name: "Facial", prices_attributes: [amount: 49.95])
+end
  
- Given(/^I have created one package$/) do
+Given(/^I have created one package$/) do
+  @service = Service.find_by_name("Microderm") unless Service.count == 0
   @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6", prices_attributes: [amount: 400])
+  Package.first.update_attribute(:service_id, @service.id)
+  Package.first.save
 end
 
 Given(/^I have created one deal$/) do
@@ -88,8 +96,3 @@ Given(/^I have created one visit$/) do
   @customer.visits.create!(visit_notes: "Hello", date_of_visit: "2014-11-10")
 end
 
-Given(/^I have created two services$/) do
-  @business.services.create!(name: "Microderm", prices_attributes: [amount: 125])
-  @business.services.create!(name: "Facial", prices_attributes: [amount: 49.95])
-end
- 

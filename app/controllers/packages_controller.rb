@@ -2,7 +2,9 @@ class PackagesController < ApplicationController
   
   before_action :get_business_and_owner
   before_action :set_package, only: [ :show, :edit, :update, :destroy ]
-  
+  before_action :set_service, only: [ :show, :edit, :update, :destroy ]
+
+
   def index
     @packages = @business.packages.all
   end
@@ -60,5 +62,9 @@ class PackagesController < ApplicationController
       
       def package_params
         params.require(:package).permit(:name, :description, :count, :date_purchased, :service_id, prices_attributes: [:id, :amount])
+      end
+      
+      def set_service
+        @service = Service.find_by_id(@package.service_id)
       end
 end

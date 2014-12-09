@@ -26,6 +26,10 @@
                 <td>Price:</td>
                 <td><%= number_to_currency(@package.prices.last.amount) %></td>
               </tr>
+              <tr>
+                <td>Service:</td>
+                <td><%= @service.name %></td>
+              </tr>
             </tbody>
           </table>
           <%= link_to "Edit this package", edit_business_package_path(@business, @package) %> |
