@@ -28,7 +28,7 @@
               </tr>
               <tr>
                 <td>Service:</td>
-                <td><%= @service.name %></td>
+                <td><%= @service.name unless @service == nil %></td>
               </tr>
             </tbody>
           </table>

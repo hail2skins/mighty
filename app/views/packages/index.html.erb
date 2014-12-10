@@ -21,7 +21,7 @@
         <td><%= package.description %></td>
         <td><%= package.count %></td>
         <td><%= number_to_currency(package.prices.last.amount) %></td>
-        <td><%= Service.find_by_id(package.service_id).name %></td>
+        <td><%= Service.find_by_id(package.service_id).name unless !package.service_id? %></td>
         <td><%= link_to 'Edit', edit_business_package_path(@business, package) %></td>
         <td><%= link_to 'Destroy', [@business, package], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
