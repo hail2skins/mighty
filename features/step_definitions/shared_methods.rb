@@ -80,8 +80,8 @@ end
 Given(/^I have created one package$/) do
   @service = Service.find_by_name("Microderm") unless Service.count == 0
   @business.packages.create!(name: "First Customer Package", description: "First package for my customers.", count: "6", prices_attributes: [amount: 400])
-  Package.first.update_attribute(:service_id, @service.id)
-  Package.first.save
+  Package.first.update_attribute(:service_id, @service.id) unless Service.count == 0
+  Package.first.save unless Service.count == 0
 end
 
 Given(/^I have created one deal$/) do
