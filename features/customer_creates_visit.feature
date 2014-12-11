@@ -21,6 +21,7 @@ Feature: Customer creates visit
     And I expect to see a form to add a new visit
     And I expect to see content "Visit notes"
     And I expect to see content "Date of visit"
+    And I expect to see content "Service(s) Provided"
     When I fill in "Visit notes" with "Skin was sensitive today."
     Then I select date from date selector
     And I click the "Create Visit" button
