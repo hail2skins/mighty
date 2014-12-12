@@ -24,6 +24,7 @@ Feature: Customer creates visit
     And I expect to see content "Service(s) Provided"
     When I fill in "Visit notes" with "Skin was sensitive today."
     Then I select date from date selector
+    And I select "Microderm" from "Service(s) Provided"
     And I click the "Create Visit" button
     Then I am at my business profile page
     And I expect to see content "Total Customer Visits: 1"
