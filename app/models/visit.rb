@@ -17,6 +17,8 @@ class Visit < ActiveRecord::Base
   belongs_to :customer
   belongs_to :deal
   accepts_nested_attributes_for :deal
+  
+  has_and_belongs_to_many :services
 
   validates_presence_of :customer_id
   validates_presence_of :date_of_visit
