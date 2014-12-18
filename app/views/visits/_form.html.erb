@@ -29,6 +29,11 @@
     </div>
     <% end %>
     
+    <div class="field">
+        <%= f.label :service_id, "Service(s) Provided" %><br />
+        <%= f.collection_check_boxes(:service_ids, @business.services.all, :id, :name) %>
+    </div>
+    
     <div class="actions">
       <%= f.submit %>
     </div>

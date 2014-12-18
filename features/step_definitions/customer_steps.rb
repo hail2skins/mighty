@@ -34,3 +34,7 @@ end
 Then(/^I expect to see today's date$/) do
   expect(page).to have_content(Date.today.strftime("%m/%d/%Y"))
 end
+
+Then(/^I check "(.*?)"$/) do |option|
+  check(option)
+end

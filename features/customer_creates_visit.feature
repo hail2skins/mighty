@@ -7,6 +7,7 @@ Feature: Customer creates visit
     Given I am logged in
     And I have created one business
     And I have created two customers
+    And I have created two services
     Then I logout
     When I login with valid credentials
 
@@ -24,7 +25,8 @@ Feature: Customer creates visit
     And I expect to see content "Service(s) Provided"
     When I fill in "Visit notes" with "Skin was sensitive today."
     Then I select date from date selector
-    And I select "Microderm" from "Service(s) Provided"
+    And I check "Microderm"
+    And I check "Facial"
     And I click the "Create Visit" button
     Then I am at my business profile page
     And I expect to see content "Total Customer Visits: 1"
