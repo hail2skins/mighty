@@ -7,6 +7,7 @@ Feature: Customer shows visits
     Given I am logged in
     And I have created one business
     And I have created two customers
+    And I have created two services
     And I have created a visit for each customer
     Then I logout
     When I login with valid credentials
@@ -24,6 +25,9 @@ Feature: Customer shows visits
     And I expect to see content "I'm Art's customer and my skin is sensitive"
     And I expect to see content "Date of visit:"
     And I expect to see content "10/24/2014"
+    And I expect to see content "Service(s) Provided"
+    And I expect to see content "Microderm"
+    And I expect to see content "Facial"
     And I expect to see a link to "Return to customer page"
     And I expect to see a link to "Return to main business page"
     When I click the "Return to customer page" link
