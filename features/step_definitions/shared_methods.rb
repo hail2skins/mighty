@@ -65,17 +65,22 @@ def create_two_customers
   @business.customers.create!(first_name: "Art", last_name: "Mills", email: "art@email.com", phones_attributes: [number: "6123333333"])
 end
 
+Given(/^I have created two services$/) do
+  @business.services.create!(name: "Microderm", prices_attributes: [amount: 125])
+  @business.services.create!(name: "Facial", prices_attributes: [amount: 49.95])
+end
+
  Given(/^I have created a visit for each customer$/) do
    @customer1 = @business.customers.find_by_first_name("David")
    @customer2 = @business.customers.find_by_first_name("Art")
    @customer1.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
    @customer2.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
+   service = Service.find_by(name: "Microderm")
+   visit = Visit.last
+   service.visits << visit
+ 
  end
 
-Given(/^I have created two services$/) do
-  @business.services.create!(name: "Microderm", prices_attributes: [amount: 125])
-  @business.services.create!(name: "Facial", prices_attributes: [amount: 49.95])
-end
  
 Given(/^I have created one package$/) do
   @service = Service.find_by_name("Microderm") unless Service.count == 0
@@ -95,4 +100,5 @@ end
 Given(/^I have created one visit$/) do
   @customer.visits.create!(visit_notes: "Hello", date_of_visit: "2014-11-10")
 end
+
 
