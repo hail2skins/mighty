@@ -78,8 +78,10 @@ end
    service = Service.find_by(name: "Microderm")
    service1 = Service.find_by(name: "Facial")
    visit = Visit.last
-   service.visits << visit
-   service1.visits << visit
+   amount = service.prices.first.amount
+   amount1 = service1.prices.first.amount
+   Appointment.create(service: service, visit: visit, amount: amount)
+   Appointment.create(service: service1, visit: visit, amount: amount1)
  end
 
  

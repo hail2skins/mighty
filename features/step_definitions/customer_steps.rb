@@ -38,3 +38,7 @@ end
 Then(/^I check "(.*?)"$/) do |option|
   check(option)
 end
+
+When(/^I uncheck "(.*?)"$/) do |option|
+  uncheck(option)
+end

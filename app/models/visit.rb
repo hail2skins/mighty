@@ -18,11 +18,13 @@ class Visit < ActiveRecord::Base
   belongs_to :deal
   accepts_nested_attributes_for :deal
   
-  has_and_belongs_to_many :services
-
   validates_presence_of :customer_id
   validates_presence_of :date_of_visit
   #validates :date_of_visit, date: true   NOT NEEDED as field itself validates well.  I think.
+
+  has_many :appointments
+  has_many :services, through: :appointments
+
 end
 
 def active_deal
