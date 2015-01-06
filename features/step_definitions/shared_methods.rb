@@ -76,9 +76,10 @@ end
    @customer1.visits.create!(visit_notes: "I'm David's customer and my skin is sensitive", date_of_visit: "2014-10-24")
    @customer2.visits.create!(visit_notes: "I'm Art's customer and my skin is sensitive", date_of_visit: "2014-10-24")
    service = Service.find_by(name: "Microderm")
+   service1 = Service.find_by(name: "Facial")
    visit = Visit.last
    service.visits << visit
- 
+   service1.visits << visit
  end
 
  
