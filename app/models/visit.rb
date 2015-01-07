@@ -22,7 +22,7 @@ class Visit < ActiveRecord::Base
   validates_presence_of :date_of_visit
   #validates :date_of_visit, date: true   NOT NEEDED as field itself validates well.  I think.
 
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :services, through: :appointments
 
 end
