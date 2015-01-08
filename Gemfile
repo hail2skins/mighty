@@ -96,4 +96,6 @@ gem 'paranoia', '~> 2.0'
 
 gem 'web-console', '~> 2.0', group: [ :development, :test ]
 
+gem 'rack-mini-profiler'
+
 ruby "2.1.4"
