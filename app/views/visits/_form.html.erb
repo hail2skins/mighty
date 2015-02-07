@@ -23,16 +23,18 @@
     
     <% if @customer.deals.where(active: true).count == 1 %>
     <div class="field">
-        <%= f.label :deal_visit, "Is this a special deal visit?" %>
+        <%= f.label :deal_visit, "This is a package deal" %>
         <%= f.check_box :deal_visit, checked: true %>
-   
     </div>
-    <% end %>
+    
+    <% else %>
     
     <div class="field">
         <%= f.label :service_id, "Service(s) Provided" %><br />
         <%= f.collection_check_boxes(:service_ids, @business.services.all, :id, :name) %>
     </div>
+    
+    <% end %>
     
     <div class="actions">
       <%= f.submit %>

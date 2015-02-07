@@ -1,7 +1,8 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
   before_action :set_visit, only: [ :show, :edit, :update, :destroy ]
-  
+  after_action :update_appointment_amount, only: [ :create, :update ]
+
   def index
     @visits = @customer.visits.all
   end
@@ -32,6 +33,7 @@ class VisitsController < ApplicationController
   def update
     respond_to do |format|
       if @visit.update(visit_params)
+        
         format.html { redirect_to [@owner, @business], notice: "Visit successfully edited." }
       else
         format.html { render action: 'new' }
@@ -75,4 +77,13 @@ class VisitsController < ApplicationController
           end
         end
       end
+      
+      def update_appointment_amount
+        @visit.appointments.each do |amount|
+          service_amount = Service.find(amount.service_id)
+          amount.update_attribute(:amount, service_amount.prices.last.amount)
+        end
+      end
+      
+      
 end
