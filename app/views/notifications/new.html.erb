@@ -4,5 +4,6 @@
     <h2>Contact Customers</h2>
     <%= render 'form' %><br />
     <p><%= link_to 'Back to main business page', owner_business_path(@owner, @business) %></p>
+    <p><%= link_to 'Notification history', business_notifications_path(@business) %></p>
   </div>
 </div>

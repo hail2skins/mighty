@@ -25,5 +25,5 @@ Feature: Business creates notification
 	    Then I click the "Create Notification" button
 	    Then I am at my business profile page
 	    And I expect to see content "Notification sent to selected customers."
-	    And I expect to see content "Contact Notifications Sent: 1"
+
 	    

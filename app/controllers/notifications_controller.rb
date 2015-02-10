@@ -19,7 +19,13 @@ class NotificationsController < ApplicationController
     end
   end
   
+  def index
+    @notifications = @business.notifications.all
+  end
   
+  def show
+    @notification = @business.notifications.find(params[:id])
+  end
   
   
   private
@@ -34,9 +40,11 @@ class NotificationsController < ApplicationController
       end
       
 	    def send_bulk_email
-	      msgsubject = @notification.subject
+
+	      notification = @notification
+
 		    @business.customers.each do |customer|
-			   TestBulkMailer.bulk_email(customer, msgsubject).deliver_later unless customer.email == ""
+			   TestBulkMailer.bulk_email(customer, notification).deliver_later unless customer.email == ""
 	      end
       end      
   
