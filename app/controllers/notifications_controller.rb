@@ -11,6 +11,7 @@ class NotificationsController < ApplicationController
     
     respond_to do |format|
       if @notification.save
+        send_bulk_email
         format.html { redirect_to [@owner, @business], notice: 'Notification sent to selected customers.' }
       else
         format.html { render action: 'new' }
@@ -31,5 +32,11 @@ class NotificationsController < ApplicationController
       def notification_params
         params.require(:notification).permit(:subject, :body, :business_id)
       end
+      
+	    def send_bulk_email
+		    @business.customers.each do |customer|
+			   TestBulkMailer.bulk_email(customer).deliver_later unless customer.email == ""
+	      end
+      end      
   
 end
