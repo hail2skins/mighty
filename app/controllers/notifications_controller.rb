@@ -44,7 +44,7 @@ class NotificationsController < ApplicationController
 	      notification = @notification
 
 		    @business.customers.each do |customer|
-			   TestBulkMailer.bulk_email(customer, notification).deliver_later unless customer.email == ""
+			    CustomerBulkMailer.bulk_email(customer, notification).deliver_later unless customer.email == ""
 	      end
       end      
   
