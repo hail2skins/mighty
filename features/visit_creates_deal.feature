@@ -27,10 +27,10 @@ Feature: Visit creates deal
       When I click the "Create Visit" button
       Then I am at my business profile page
       And I expect to see content "Amount Spent"
-      And I expect to see content "$66.00"
+      And I expect to see content "$66.67"
       When I click the "Art" link
       And I expect to see content "Amount Spent"
-      And I expect to see content "$66.00"
+      And I expect to see content "$66.67"
       And I click the "Packages in progress:" link
       Then I expect to see content "5"
       
@@ -43,7 +43,7 @@ Feature: Visit creates deal
       When I click the "New visit for Art Mills" link
       And I click the "Create Visit" button
       And I expect to see content "Amount Spent"
-      And I expect to see content "$66.00"
+      And I expect to see content "$66.67"
       When I click the "Art" link
       Then I expect to see content "Purchase a package?"
       And I expect to see content "Completed packages:"

@@ -98,7 +98,6 @@ Given(/^I have created one deal$/) do
   @customer.deals.new(date_purchased: "2014-11-13", business_id: 1, used_count: 6, active: true)
   @customer.deals.first.update_attribute(:package_id, @package.id)
   @customer.deals.first.save
-  @service = @customer.deals.first.package.service_id
 end
 
 Given(/^I have created one visit$/) do

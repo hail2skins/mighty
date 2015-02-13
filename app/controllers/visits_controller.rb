@@ -104,7 +104,8 @@ class VisitsController < ApplicationController
       end      
       
       def deal_amount
-        @visit.deal.package.prices.first.amount.to_i / @visit.deal.package.count
+        total = @visit.deal.package.prices.first.amount / @visit.deal.package.count
+        total.round(2)
       end
       
       def deal_service
