@@ -1,0 +1,59 @@
+<%= provide(:title, "Gift Certificate Details") %>
+<div class="row">
+  <div class="col-md-6 col-lg-6">
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= "Gift Certificate Details" %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-10 col-lg-10">
+          <table class="table table-gift-dertificate-information">
+            <tbody>
+              <tr>
+                <td>Certificate Number:</td>
+                <td><%= @gift_certificate.certificate_number %></td>
+              </tr>
+              <tr>
+                <td>Certificate Amount:</td>
+                <td><%= number_to_currency(@gift_certificate.prices.last.amount) %></td>
+              </tr>
+              <tr>
+                <td>Redeemed?:</td>
+                <td>
+                  <% if @gift_certificate.active? %>
+                    No
+                  <% else %>
+                    Yes
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>Purchased By:</td>
+                <td><%= @gift_certificate.customer.name %></td>
+              </tr>
+              <tr>
+                <td>Purchased On:</td>
+                <td><%= @gift_certificate.created_at.to_date.strftime("%m/%d/%Y") %></td>
+              </tr>
+              <tr>
+                <td>Certificate Comments:</td>
+                <td>
+                  <% @gift_certificate.comments.each do |comment| %>
+                    <%= comment.comment %><br />
+                  <% end %>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <%= link_to "Edit this certificate", '#' %> |
+          <%= link_to "Delete this certificate", '#'  %>
+        </div>
+      </div>
+    </div>
+    <%= link_to "Return to customer page", [@business, @customer] %> |
+    <%= link_to "Return to main business page", [@owner, @business] %>
+   </div> 
+    
+</div>

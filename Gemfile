@@ -94,7 +94,7 @@ gem 'cancancan', '~> 1.7'
 
 gem 'paranoia', '~> 2.0'
 
-gem 'web-console', '~> 2.0', group: [ :development, :test ]
+gem 'web-console', '2.0.0.beta4', group: [ :development, :test ]
 
 gem 'rack-mini-profiler'
 
