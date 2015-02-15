@@ -1,0 +1,39 @@
+<%= provide(:title, "Gift Certificates Purchased by " + @customer.name) %>
+
+<h2>Gift Certificates Purchased by <%= @customer.name %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Certificate Number</th>
+      <th>Amount</th>
+      <th>Redeemed?</th>
+      <th>Purchased By</th>
+      <th>Purchased On</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer.gift_certificates.each do |gc| %>
+      <tr>
+        <td><%= link_to gc.certificate_number, [@customer, gc] %></td>
+        <td><%= number_to_currency(gc.prices.last.amount) %></td>
+        <td>
+          <% if gc.active? %>
+            No
+          <% else %>
+            Yes
+          <% end %>
+        </td>
+        <td><%= gc.customer.name %></td>
+        <td><%= gc.created_at.to_date.strftime("%m/%d/%Y") %></td>
+        <td><%= link_to "Edit", [:edit, gc.customer, gc] %></td>
+        <td><%= link_to 'Destroy', [gc.customer, gc], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+     <%= link_to "Return to main business page", [@owner, @business] %>

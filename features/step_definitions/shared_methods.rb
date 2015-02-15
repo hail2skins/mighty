@@ -109,4 +109,12 @@ Given(/^I have created two notifications$/) do
   @business.notifications.create!(subject: "This is awesome too, huh", body: "Who gives a shit")
 end
 
+Given(/^I have created two gift certificates$/) do
+  @customer = Customer.find_by_first_name("Art")
+  @customer.gift_certificates.create!(active: true, prices_attributes: [ amount: 100 ], comments_attributes: [ comment: "This is first" ])
+  @customer.gift_certificates.create!(active: true, prices_attributes: [ amount: 125 ], comments_attributes: [ comment: "This is second" ])
+  @customer.gift_certificates.first.update_attribute(:customer_id, @customer.id)
+  @customer.gift_certificates.last.update_attribute(:customer_id, @customer.id)  
+end
+
 

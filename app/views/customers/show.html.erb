@@ -90,8 +90,8 @@
                           <td><%= link_to "Buy More Gift Certificates", new_customer_gift_certificate_path(@customer) %></td>
                           <td></td>
                           <tr>
-                            <td><%= link_to "Gift Certificates Purchased:", '#' %></td>
-                            <td><%= link_to @customer.gift_certificates.count, '#' %></td>
+                            <td><%= link_to "Gift Certificates Purchased:", customer_gift_certificates_path(@customer) %></td>
+                            <td><%= link_to @customer.gift_certificates.count, customer_gift_certificates_path(@customer) %></td>
                           </tr>
                         <% end %>
                         

@@ -23,7 +23,10 @@ class GiftCertificatesController < ApplicationController
   end 
 
   def show
+  end
   
+  def index
+    @gift_certificates = @customer.gift_certificates.all
   end
 
 
