@@ -111,10 +111,10 @@ end
 
 Given(/^I have created two gift certificates$/) do
   @customer = Customer.find_by_first_name("Art")
-  @customer.gift_certificates.create!(active: true, prices_attributes: [ amount: 100 ], comments_attributes: [ comment: "This is first" ])
-  @customer.gift_certificates.create!(active: true, prices_attributes: [ amount: 125 ], comments_attributes: [ comment: "This is second" ])
-  @customer.gift_certificates.first.update_attribute(:customer_id, @customer.id)
-  @customer.gift_certificates.last.update_attribute(:customer_id, @customer.id)  
+  @business = Business.first
+  GiftCertificate.create!(customer_id: @customer.id, active: true, prices_attributes: [ amount: 100 ], comments_attributes: [ comment: "This is first" ])
+  GiftCertificate.create!(customer_id: @customer.id, active: true, prices_attributes: [ amount: 125 ], comments_attributes: [ comment: "This is second" ])
+  @gift_certificates = @business.gift_certificates.all
 end
 
 

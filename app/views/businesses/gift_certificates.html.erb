@@ -1,6 +1,6 @@
-<%= provide(:title, "Gift Certificates Purchased by " + @customer.name) %>
+<%= provide(:title, "All Gift Certificates Sold") %>
 
-<h2>Gift Certificates Purchased by <%= @customer.name %></h2>
+<h2>All Gift Certificates Sold</h2>
 
 <table>
   <thead>
@@ -10,14 +10,14 @@
       <th>Redeemed?</th>
       <th>Purchased By</th>
       <th>Purchased On</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @customer.gift_certificates.each do |gc| %>
+    <% @gift_certificates.each do |gc| %>
       <tr>
-        <td><%= link_to gc.certificate_number, [@customer, gc] %></td>
+        <td><%= gc.certificate_number %></td>
         <td><%= number_to_currency(gc.prices.last.amount) %></td>
         <td>
           <% if gc.active? %>
@@ -28,6 +28,7 @@
         </td>
         <td><%= gc.customer.name %></td>
         <td><%= gc.created_at.to_date.strftime("%m/%d/%Y") %></td>
+        <td><%= link_to "Show", [gc.customer, gc] %></td>
         <td><%= link_to "Edit", [:edit, gc.customer, gc] %></td>
       </tr>
     <% end %>

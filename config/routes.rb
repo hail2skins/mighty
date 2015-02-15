@@ -9,6 +9,7 @@ Mightysmalls::Application.routes.draw do
   resources :businesses do
     member do
       get 'visits'
+      get 'gift_certificates'
     end
     resources :customers
     resources :packages

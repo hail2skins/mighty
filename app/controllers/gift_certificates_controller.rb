@@ -28,6 +28,21 @@ class GiftCertificatesController < ApplicationController
   def index
     @gift_certificates = @customer.gift_certificates.all
   end
+  
+  def edit
+  end
+  
+  def update
+    respond_to do |format|
+      if @gift_certificate.update(gift_certificate_params)
+        
+        format.html { redirect_to [@owner, @business], notice: "Gift Certificate successfully edited." }
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
+  
 
 
   
