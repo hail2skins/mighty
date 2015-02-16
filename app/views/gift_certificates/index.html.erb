@@ -17,7 +17,7 @@
   <tbody>
     <% @customer.gift_certificates.each do |gc| %>
       <tr>
-        <td><%= link_to gc.certificate_number, [@customer, gc] %></td>
+        <td><%= link_to gc.certificate_number, [ gc.customer, gc ] %></td>
         <td><%= number_to_currency(gc.prices.last.amount) %></td>
         <td>
           <% if gc.active? %>

@@ -1,7 +1,6 @@
 class GiftCertificatesController < ApplicationController
   before_action :get_customer_business_and_owner
   before_action :set_gift_certificate, only: [ :show, :edit, :update, :destroy ]
-  after_action :update_certificate_info, only: :create
 
 
   def new
@@ -14,6 +13,8 @@ class GiftCertificatesController < ApplicationController
     @gift_certificate = @customer.gift_certificates.new(gift_certificate_params)
     respond_to do |format|
       if @gift_certificate.save
+        update_certificate_info
+        
         
         format.html { redirect_to [@customer, @gift_certificate], notice: "Gift Certificate created." }
       else

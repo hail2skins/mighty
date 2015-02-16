@@ -10,4 +10,5 @@ first_certificate:
 #
   customer: art
   business: business
+  certificate_number: 1
   
