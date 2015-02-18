@@ -2,15 +2,16 @@
 
 <h2>All Gift Certificates Sold</h2>
 
-<table>
+<table class='table table-bordered' id='gift_certificates'>
   <thead>
     <tr>
       <th>Certificate Number</th>
       <th>Amount</th>
       <th>Redeemed?</th>
+      <th>Date Redeemed</th>
       <th>Purchased By</th>
       <th>Purchased On</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -26,6 +27,7 @@
             Yes
           <% end %>
         </td>
+        <td><%= gc.date_redeemed ? gc.date_redeemed.to_date.strftime("%m/%d/%Y") : "" %></td>
         <td><%= gc.customer.name %></td>
         <td><%= gc.created_at.to_date.strftime("%m/%d/%Y") %></td>
         <td><%= link_to "Edit", [:edit, gc.customer, gc] %></td>

@@ -29,6 +29,10 @@
                 </td>
               </tr>
               <tr>
+                <td>Date Redeemed:</td>
+                <td><%= @gift_certificate.date_redeemed ? @gift_certificate.date_redeemed.to_date.strftime("%m/%d/%Y") : "" %></td>
+              </tr>
+              <tr>
                 <td>Purchased By:</td>
                 <td><%= @gift_certificate.customer.name %></td>
               </tr>
@@ -43,11 +47,11 @@
 
             </tbody>
           </table>
-          <%= link_to "Edit this certificate", '#'%>
+          <%= link_to "Edit", edit_customer_gift_certificate_path(@customer, @gift_certificate) %>
         </div>
       </div>
     </div>
-    <%= link_to "Return to customer page", [@business, @customer] %> |
+    <%= link_to "Return to customer profile view", [@business, @customer] %> |
     <%= link_to "Return to main business page", [@owner, @business] %>
    </div> 
     
