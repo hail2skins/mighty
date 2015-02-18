@@ -6,7 +6,7 @@ class GiftCertificate < ActiveRecord::Base
   accepts_nested_attributes_for :comments, allow_destroy: true
   
   has_many :prices, as: :cost
-  accepts_nested_attributes_for :prices
+  accepts_nested_attributes_for :prices, allow_destroy: true
   
   
 end

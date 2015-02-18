@@ -15,6 +15,13 @@ Mightysmalls::Application.routes.draw do
     resources :packages
     resources :services
     resources :notifications
+    resources :gift_certificates do
+      patch :redeem, on: :member
+      get :redeem, on: :member
+      get :edit_redeem, on: :member
+      put :edit_redeem, on: :member
+      patch :edit_redeem, on: :member
+    end 
   end
 
   resources :customers do

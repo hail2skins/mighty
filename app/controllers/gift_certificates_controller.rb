@@ -1,7 +1,7 @@
 class GiftCertificatesController < ApplicationController
-  before_action :get_customer_business_and_owner
-  before_action :set_gift_certificate, only: [ :show, :edit, :update, :destroy ]
-
+  before_action :get_customer_business_and_owner, except: [ :redeem, :update ]
+  before_action :set_gift_certificate, only: [ :show, :edit]
+  before_action :set_redeem_gift_certificate, only: [ :redeem ]
 
   def new
     @gift_certificate = @customer.gift_certificates.build
@@ -34,36 +34,66 @@ class GiftCertificatesController < ApplicationController
   end
   
   def update
-    respond_to do |format|
-      if @gift_certificate.update(gift_certificate_params)
+
+    if params[:commit] == "Redeem Gift Certificate"
+      set_redeem_gift_certificate
+      respond_to do |format|
+        if @gift_certificate.update(gift_certificate_params)
         
-        format.html { redirect_to [@owner, @business], notice: "Gift Certificate successfully edited." }
-      else
-        format.html { render action: 'new' }
+         format.html { redirect_to gift_certificates_business_path(@business), notice: "Gift Certificate Redeemed." }
+        else
+         format.html { render action: 'new' }
+        end
       end
+    else
+      respond_to do |format|
+        get_customer_business_and_owner
+        set_gift_certificate
+        if @gift_certificate.update(gift_certificate_params)
+        
+         format.html { redirect_to [@owner, @business], notice: "Gift Certificate successfully edited." }
+        else
+         format.html { render action: 'new' }
+        end
+      end      
     end
   end
   
 
-
   
+  def redeem
 
-
-
+   #@gift_certificate.update(gift_certificate_params)
+  
+  end
+  
+  
   private
  
       def set_gift_certificate
         @gift_certificate = @customer.gift_certificates.find(params[:id])
       end
-  
+      
+      def set_redeem_gift_certificate
+        @business = Business.find(params[:business_id])
+        @gift_certificate = @business.gift_certificates.find(params[:id])
+        @owner = @business.owner
+        @customer = @gift_certificate.customer
+      end
+      
+      
       def get_customer_business_and_owner
-        @customer = Customer.find(params[:customer_id])
+        @customer = Customer.find(params[:customer_id]) 
         @business = @customer.business
         @owner = @business.owner
       end
       
       def gift_certificate_params
         params.require(:gift_certificate).permit(:customer_id, :active, :prices_attributes => [:id, :amount], :comments_attributes => [:id, :comment])
+      end
+      
+      def redeem_gift_certificate_params
+        params.require(:gift_certificate).permit(:active)
       end
       
       def update_certificate_info

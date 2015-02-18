@@ -2,8 +2,6 @@ require "test_helper"
 
 class EditGiftCertificateTest < ActionDispatch::IntegrationTest
 
-require "test_helper"
-
   def setup
     login
   end
@@ -132,6 +130,8 @@ require "test_helper"
                             
     assert page.has_content?("Certificate Comments: Still the first certificate."),
                             "New Certificate Comment Still the first certificate not visible."
+  
+  
   end
 
 end
