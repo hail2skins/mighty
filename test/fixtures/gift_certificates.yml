@@ -11,4 +11,5 @@ first_certificate:
   customer: art
   business: business
   certificate_number: 1
+  initial_comment: "This is my very first certificate."
   

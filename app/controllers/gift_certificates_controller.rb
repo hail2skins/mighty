@@ -89,7 +89,7 @@ class GiftCertificatesController < ApplicationController
       end
       
       def gift_certificate_params
-        params.require(:gift_certificate).permit(:customer_id, :active, :prices_attributes => [:id, :amount], :comments_attributes => [:id, :comment])
+        params.require(:gift_certificate).permit(:customer_id, :initial_comment, :prices_attributes => [:id, :amount])
       end
       
       def redeem_gift_certificate_params

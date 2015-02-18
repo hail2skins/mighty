@@ -37,18 +37,13 @@
                 <td><%= @gift_certificate.created_at.to_date.strftime("%m/%d/%Y") %></td>
               </tr>
               <tr>
-                <td>Certificate Comments:</td>
-                <td>
-                  <% @gift_certificate.comments.each do |comment| %>
-                    <%= comment.comment %><br />
-                  <% end %>
-                </td>
+                <td>Certificate Comment:</td>
+                <td><%= @gift_certificate.initial_comment %></td>
               </tr>
 
             </tbody>
           </table>
-          <%= link_to "Edit this certificate", '#' %> |
-          <%= link_to "Delete this certificate", '#'  %>
+          <%= link_to "Edit this certificate", '#'%>
         </div>
       </div>
     </div>

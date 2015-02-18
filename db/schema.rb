@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213191623) do
+ActiveRecord::Schema.define(version: 20150218041147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 20150213191623) do
     t.datetime "updated_at",                        null: false
     t.integer  "business_id"
     t.integer  "certificate_number"
+    t.text     "initial_comment"
+    t.text     "redemption_comment"
   end
 
   add_index "gift_certificates", ["active"], name: "index_gift_certificates_on_active", using: :btree

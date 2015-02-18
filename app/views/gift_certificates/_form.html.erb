@@ -16,10 +16,10 @@
        <%= price.number_field :amount %><br />
      <% end %>
      
-     <%= f.fields_for :comments do |comment| %>
-       <%= comment.label :comment, 'Certificate Comment', message: "Please fill this out" %><br />
-       <%= comment.text_area :comment %>
-     <% end %>
+     <div class="field">
+       <%= f.label :initial_comment, "Certificate Comment" %><br />
+       <%= f.text_area :initial_comment %>
+     </div>
     <br />   
     <div class="actions">
       <%= f.submit %>
