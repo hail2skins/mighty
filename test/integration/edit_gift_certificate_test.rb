@@ -59,8 +59,8 @@ class EditGiftCertificateTest < ActionDispatch::IntegrationTest
     assert page.has_field?('Certificate Amount', with: "100.00"),
                           "Certificate Amount of 100 not showing in a form field."
                           
-    assert page.has_field?('Certificate Comment', with: "#{certificate.comments.last.comment}"),
-                          "Certificate Comment field with '#{certificate.comments.last.comment} not showing."
+    assert page.has_field?('Certificate Comment', with: "#{certificate.initial_comment}"),
+                          "Certificate Comment field with '#{certificate.initial_comment} not showing."
                     
     assert page.has_link?('Back to business page'),
                          "'Back to business page' link is not available."
@@ -89,8 +89,8 @@ class EditGiftCertificateTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Certificate Amount: $120.00"),
                             "New Certificate Amount of $120.00 not visible."
                             
-    assert page.has_content?("Certificate Comments: Still the first certificate."),
-                            "New Certificate Comment Still the first certificate not visible."
+    assert page.has_content?("Certificate Comment: Still the first certificate"),
+                            "Content -- New Certificate Comment -- Still the first certificate not found."
     
   end
 
@@ -128,7 +128,7 @@ class EditGiftCertificateTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Certificate Amount: $120.00"),
                             "New Certificate Amount of $120.00 not visible."
                             
-    assert page.has_content?("Certificate Comments: Still the first certificate."),
+    assert page.has_content?("Certificate Comment: Still the first certificate."),
                             "New Certificate Comment Still the first certificate not visible."
   
   

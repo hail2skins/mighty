@@ -31,15 +31,12 @@ class ShowGiftCertificateTest < ActionDispatch::IntegrationTest
                  
     assert page.has_title?("Gift Certificates Purchased by #{customer.name}"),
                            "Title -- Gift Certificates Purchased by #{customer.name} not available."
-                        
-    assert page.has_content?("Gift Certificates Purchased by #{customer.name}"),
-                             "Content -- Gift Certificates Purchased by #{customer.name} not available."
-                             
+                      
     assert page.has_table?('gift_certificates'),
                          "Table -- gift_certificates table not available."
                          
     #Checks all table structure content expected words.   method provided above.
-    check_content("Certificate Number", "Amount", "Redeemed?", "Date Redeemed", "Purchased By", "Purchased On")
+    check_content("Gift Certificates Purchased by #{customer.name}", "Certificate Number", "Amount", "Redeemed?", "Date Redeemed", "Purchased By", "Purchased On")
     
     #Checks table data fed by database is accurate
     check_content("1", "$100.00", "No", customer.name, customer.created_at.to_date.strftime("%m/%d/%Y"))

@@ -62,35 +62,14 @@ class CreateGiftCertificateTest < ActionDispatch::IntegrationTest
     assert_equal customer_gift_certificate_path(customer1, customer1.gift_certificates.first), current_path,
                  "Expected to be at gift certificate show page, but, instead at #{current_path}."
                  
-    assert page.has_content?("Gift Certificate created"),
-                             "Content -- Gift Certificate created not available."
-                            
-    #Certificate Number 1 is set in the gift_certificate fixture
-    assert page.has_content?("Certificate Number: 2"),
-                             "Content -- Certificate Number: 2 not available."
-                             
-    assert page.has_content?("Certificate Amount: $120.00"),
-                             "Content -- Certificate Amount: $120.00 not available."
-                             
-    assert page.has_content?("Redeemed?: No"),
-                             "Content -- Redeemed?: No not available."
-                             
-    assert page.has_content?("Purchased By: #{customer1.name}"),
-                             "Content -- Purchased By: #{customer1.name} not available."
-                             
-    assert page.has_content?("Purchased On: #{purchased_on}"),
-                             "Content -- Purchased On: #{purchased_on} not available"
-                             
-    assert page.has_content?("Certificate Comment: David's first certificate."),
-                             "Content -- Certificate Comment: David's first certificate not available."
-                           
-    assert page.has_link?("Return to customer page"),
-                          "Link -- Return to customer page not available."
-                          
-    assert page.has_link?("Return to main business page"),
-                          "Link -- Return to main business page not available."
-                          
-    click_link "Return to customer page"
+    #check content of customer_gift_certificate show page.   Cert Number 1 taken by fixture.
+    check_content("Gift Certificate created", "Certificate Number: 2", "Certificate Amount: $120.00", 
+                  "Redeemed?: No", "Date Redeemed:", "Purchased By: #{customer1.name}", "Purchased On: #{purchased_on}",
+                  "Certificate Comment: David's first certificate.")
+    
+    check_links("Return to customer profile view", "Return to main business page")
+   
+    click_link "Return to customer profile view"
     
     assert_equal business_customer_path(business, customer1), current_path,
                  "Expected to be at customer show page, but, instead at #{current_path}."    
@@ -98,14 +77,10 @@ class CreateGiftCertificateTest < ActionDispatch::IntegrationTest
     refute page.has_link?("Buy Gift Certificate"),
                           "Link -- Buy Gift Certificate exists but should not."
                           
-    assert page.has_link?("Buy More Gift Certificates"),
-                          "Link -- Buy More Gift Certificates not available."
-   
+    check_links("Buy More Gift Certificates", "Gift Certificates Purchased:")
+    
     assert page.has_content?("Gift Certificates Purchased: 1"),
                              "Content -- Gift Certificates Purchased: 1 not available."
-   
-    assert page.has_link?("Gift Certificates Purchased:"),
-                          "Link -- Gift Certificates Purchased: not available."
                           
   end
   

@@ -5,11 +5,9 @@ require "minitest/rails"
 require "minitest/rails/capybara"
 
 require "minitest/reporters"
-Minitest::Reporters.use!(
-  Minitest::Reporters::SpecReporter.new,
-  ENV,
-  Minitest.backtrace_filter
-)
+reporter_options = { color: true }
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in test/support/ and its subdirectories.
