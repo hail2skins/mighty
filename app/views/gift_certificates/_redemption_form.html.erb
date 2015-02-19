@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Certificate Amount: <%= number_to_currency(@gift_certificate.prices.first.amount) %>    
+  </div>
+
+  <div class="panel-body">
+  <%= simple_form_for([@business, @gift_certificate]) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.simple_fields_for :prices do |price| %>
+      <%= price.input :amount, label: "Redemption Amount", placeholder: "#{@gift_certificate.prices.first.amount.to_i}" %>
+    <% end %>
+    <%= f.input :redemption_comment, placeholder: "If you fill out Redemption Amount for less than the Certificate Amount above, this will not be fully redeemed." %>
+   
+ 
+     
+
+
+ 
+    <div class="actions">
+      <%= f.submit 'Redeem Gift Certificate' %>
+    </div>
+    
+
+
+<% end %>
+
+</div>
+</div>

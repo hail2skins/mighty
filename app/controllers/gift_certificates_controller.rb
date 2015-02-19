@@ -42,7 +42,7 @@ class GiftCertificatesController < ApplicationController
         
          format.html { redirect_to gift_certificates_business_path(@business), notice: "Gift Certificate Redeemed." }
         else
-         format.html { render action: 'new' }
+         format.html { render action: 'redeem' }
         end
       end
     else

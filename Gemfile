@@ -85,6 +85,8 @@ gem "spring", group: :development
 #gem "spring-commands-rspec", group: :development
 #gem "spring-commands-cucumber"
 
+gem 'bootstrap_form'
+
 #for heroku setup, remove if off heroku
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
