@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "appointments", ["visit_id"], name: "index_appointments_on_visit_id", using: :btree
 
   create_table "businesses", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
-    t.boolean  "selected",    default: false
+    t.boolean  "selected",                default: false
   end
 
   add_index "businesses", ["deleted_at"], name: "index_businesses_on_deleted_at", using: :btree
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "businesses", ["owner_id"], name: "index_businesses_on_owner_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.integer  "business_id"
     t.integer  "service_id"
     t.datetime "created_at"
@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", unique: true, using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "referred_by"
+    t.string   "first_name",  limit: 255
+    t.string   "middle_name", limit: 255
+    t.string   "last_name",   limit: 255
+    t.string   "referred_by", limit: 255
     t.integer  "business_id"
-    t.string   "email"
+    t.string   "email",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -76,9 +76,6 @@ ActiveRecord::Schema.define(version: 20150219203949) do
 
   add_index "customers", ["business_id"], name: "index_customers_on_business_id", using: :btree
   add_index "customers", ["deleted_at"], name: "index_customers_on_deleted_at", using: :btree
-  add_index "customers", ["email"], name: "index_customers_on_email", using: :btree
-  add_index "customers", ["first_name"], name: "index_customers_on_first_name", using: :btree
-  add_index "customers", ["last_name"], name: "index_customers_on_last_name", using: :btree
 
   create_table "deals", force: :cascade do |t|
     t.integer  "customer_id"
@@ -122,26 +119,26 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "notifications", ["business_id"], name: "index_notifications_on_business_id", using: :btree
 
   create_table "owners", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "middle_name"
-    t.boolean  "admin",                  default: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "middle_name",            limit: 255
+    t.boolean  "admin",                              default: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,     null: false
-    t.string   "unlock_token"
+    t.string   "unconfirmed_email",      limit: 255
+    t.integer  "failed_attempts",                    default: 0,     null: false
+    t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,7 +152,7 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "owners", ["unlock_token"], name: "index_owners_on_unlock_token", unique: true, using: :btree
 
   create_table "packages", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
     t.integer  "count"
     t.integer  "business_id"
@@ -169,7 +166,7 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   create_table "phones", force: :cascade do |t|
     t.string   "number",         limit: 10
     t.integer  "phoneable_id"
-    t.string   "phoneable_type"
+    t.string   "phoneable_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -177,9 +174,9 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "phones", ["phoneable_type", "phoneable_id"], name: "index_phones_on_phoneable_type_and_phoneable_id", using: :btree
 
   create_table "prices", force: :cascade do |t|
-    t.decimal  "amount",     precision: 8, scale: 2
+    t.decimal  "amount",                 precision: 8, scale: 2
     t.integer  "cost_id"
-    t.string   "cost_type"
+    t.string   "cost_type",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -187,7 +184,7 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   add_index "prices", ["cost_type", "cost_id"], name: "index_prices_on_cost_type_and_cost_id", unique: true, using: :btree
 
   create_table "services", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
     t.integer  "business_id"
     t.datetime "created_at"
@@ -195,6 +192,11 @@ ActiveRecord::Schema.define(version: 20150219203949) do
   end
 
   add_index "services", ["business_id"], name: "index_services_on_business_id", using: :btree
+
+  create_table "services_visits", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "visit_id"
+  end
 
   create_table "visits", force: :cascade do |t|
     t.text     "visit_notes"

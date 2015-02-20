@@ -6,7 +6,7 @@
   <%= f.input :date_of_visit, as: :date, html5: true %>
   
   <% if @customer.deals.where(active: true).count == 1 %>
-    <%= f.input :deal_visit, label: "This is a package deal" %>
+    <%= f.input :deal_visit, label: "This is a package visit", input_html: { checked: true } %>
     
   <% else %>
     <%= f.association :services, as: :check_boxes %>

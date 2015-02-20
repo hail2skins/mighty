@@ -109,8 +109,18 @@ class RedeemGiftCertificateTest < ActionDispatch::IntegrationTest
     
     click_link "Redeem"
     
-    check_content("Certificate Already Redeemed")
+    #check content after redemption selected to reflect already redeemed.
+    check_content("Certificate Already Redeemed",
+                  "Redemption comments: Work baby.",
+                  "Date Redeemed: #{certificate.date_redeemed.to_date.strftime("%m/%d/%Y")}")
+                  
+    #added a link on the alternate page.   check it.
+    check_links("Return to gift certificate index page")
     
+    click_link "Return to gift certificate index page"
+    
+    assert_equal gift_certificates_business_path(business), current_path, 
+                "Expected to be at the gift_certificates_business_path, but at #{current_path}."
     
   end
   
