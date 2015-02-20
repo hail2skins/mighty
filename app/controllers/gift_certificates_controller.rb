@@ -36,16 +36,25 @@ class GiftCertificatesController < ApplicationController
   def update
 
     if params[:commit] == "Redeem Gift Certificate"
-      set_redeem_gift_certificate
+      set_redeem_gift_certificate 
+      if params[:gift_certificate][:active] == "1"
+ 
       respond_to do |format|
         if @gift_certificate.update(gift_certificate_params)
-        
-         format.html { redirect_to gift_certificates_business_path(@business), notice: "Gift Certificate Redeemed." }
+          redeem_update_params
+          format.html { redirect_to gift_certificates_business_path(@business), notice: "Gift Certificate Redeemed." }
         else
-         format.html { render action: 'redeem' }
+          format.html { render action: 'redeem' }
         end
       end
-    else
+      
+      else
+        respond_to do |format|
+          format.html {redirect_to gift_certificates_business_path(@business), notice: "You did not check the box, so the certificate is not redeemed." }
+        end
+      end
+  
+    else 
       respond_to do |format|
         get_customer_business_and_owner
         set_gift_certificate
@@ -59,7 +68,6 @@ class GiftCertificatesController < ApplicationController
     end
   end
   
-
   
   def redeem
 
@@ -89,17 +97,18 @@ class GiftCertificatesController < ApplicationController
       end
       
       def gift_certificate_params
-        params.require(:gift_certificate).permit(:customer_id, :initial_comment, :prices_attributes => [:id, :amount])
-      end
-      
-      def redeem_gift_certificate_params
-        params.require(:gift_certificate).permit(:active)
+        params.require(:gift_certificate).permit(:active, :redemption_comment, :customer_id, :initial_comment, :prices_attributes => [:id, :amount])
       end
       
       def update_certificate_info
         @gift_certificate.update_attribute(:business_id, @business.id)
         certificate_number = @business.gift_certificates.count
         @gift_certificate.update_attribute(:certificate_number, certificate_number)
+      end
+      
+      def redeem_update_params
+          @gift_certificate.update_attribute(:active, false)
+          @gift_certificate.update_attribute(:date_redeemed, Time.now)
       end
 
 end

@@ -50,7 +50,13 @@ class ShowGiftCertificateTest < ActionDispatch::IntegrationTest
                 "Expected to be at customer gift certificate show page, but at #{current_path}."
                 
     #checks all table column content on customer show page.
-    check_content("Certificate Number", "Amount", "Redeemed?", "Date Redeemed", "Purchased By", "Purchased On")
+    check_content("Certificate Number", 
+                  "Amount", 
+                  "Redeemed?", 
+                  "Date Redeemed", 
+                  "Purchased By", 
+                  "Purchased On", 
+                  "Redemption Comment")
     
     #checks content that should be fed from the database for an unredeemed cert on the show page
     check_content("1", "$100.00", "No", customer.name, customer.created_at.to_date.strftime("%m/%d/%Y"))
