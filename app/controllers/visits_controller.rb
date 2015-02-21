@@ -90,7 +90,7 @@ class VisitsController < ApplicationController
             amount.update_attribute(:amount, deal_amount)
           else
             service_amount = Service.find(amount.service_id)
-            amount.update_attribute(:amount, service_amount.prices.last.amount)
+            amount.update_attribute(:amount, service_amount.prices.first.amount)
           end
         end
       end

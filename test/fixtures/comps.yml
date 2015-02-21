@@ -1,0 +1,16 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+#one:
+#  date_comp: 2015-02-20
+#  amount_comp: 9.99
+#  business: 
+#  visit: 
+#  customer: 
+
+#two:
+#  date_comp: 2015-02-20
+#  amount_comp: 9.99
+#  business: 
+#  visit: 
+#  customer: 
