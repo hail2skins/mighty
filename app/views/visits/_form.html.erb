@@ -1,7 +1,7 @@
 <%= simple_form_for([@customer, @visit]) do |f| %>
   <%= f.error_notification %>
   
-  <%= f.input :visit_notes %>
+  <%= f.input :visit_notes, placeholder: "This field is not required.  However, it is good practice to put information here that you may wish to recall at a later date.  Especially good for customers you don't see as regularly." %>
   
   <%= f.input :date_of_visit, as: :date, html5: true %>
   
@@ -9,7 +9,7 @@
     <%= f.input :deal_visit, label: "This is a package visit", input_html: { checked: true } %>
     
   <% else %>
-    <%= f.association :services, as: :check_boxes %>
+    <%= f.association :services, as: :check_boxes, label: "Service(s) provided on this visit" %>
   <% end %>
    
   <%= f.button :submit %>

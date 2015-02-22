@@ -24,6 +24,7 @@ class Visit < ActiveRecord::Base
 
   has_many :appointments, dependent: :destroy
   has_many :services, through: :appointments
+  validates_presence_of :services
   has_one :comp, dependent: :destroy
 
 end

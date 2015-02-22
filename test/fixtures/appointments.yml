@@ -5,8 +5,13 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-first_visit_art: 
+first_appointment_art: 
 # column: value
-  visit_notes: "Art's very first visit."
-  date_of_visit: <%= Time.now %>
-  customer: art
+  service: microderm
+  visit: first_visit_art
+  amount: 125
+  
+second_appointment_art:
+  service: facial
+  visit: first_visit_art
+  amount: 75
