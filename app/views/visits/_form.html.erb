@@ -9,8 +9,25 @@
     <%= f.input :deal_visit, label: "This is a package visit", input_html: { checked: true } %>
     
   <% else %>
-    <%= f.association :services, as: :check_boxes, label: "Service(s) provided on this visit" %>
+    <%= f.association :services, collection: @business.services.all, as: :check_boxes, label: "Service(s) provided on this visit" %>
+    
+    <div class="well well-sm">
+      <p><b>Did you discount this visit?</b></p>
+      <p>If so, check the box below and type in the total amount you charged for this visit.  As an example, if you normally charge $100.00 for a service, but only charged this customer $75.00, check the box and type in $75.00.</p>
+      <p>When you click the Create Visit button, we'll do the math for you.</p>
+    </div>
+    
+    <%= f.simple_fields_for :comp do |comp| %>
+      <%= comp.input :active, as: :boolean, default: false, label: "Check this ONLY if you wish to give a discount" %>
+      <%= comp.input :amount_comp, label: "Total charged for this visit?", placeholder: "Only fill this in with the amount if you selected checked the box" %>
+    <% end %>
+    
+    
   <% end %>
+  
+
+  
+  
    
   <%= f.button :submit %>
 <% end %>

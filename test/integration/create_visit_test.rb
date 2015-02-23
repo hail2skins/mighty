@@ -9,6 +9,10 @@ class CreateVisitTest < ActionDispatch::IntegrationTest
     click_link "Logout"
   end
   
+  def owner
+    owners(:owner)
+  end
+  
   def business
     businesses(:business)
   end
@@ -32,12 +36,7 @@ class CreateVisitTest < ActionDispatch::IntegrationTest
  def visit_one
    visits(:first_visit_art)
  end
- 
- def fill_in_date_stuff
-   Capybara.current_driver = Capybara.javascript_driver
-   find_by_id("visit_date_of_visit").set("02/01/2015")
- end
-  
+
   test "create visit with one service from main business show page" do
     
     #visit created through fixture will show the following:
@@ -45,7 +44,8 @@ class CreateVisitTest < ActionDispatch::IntegrationTest
                 "1")
                 
     #and this
-    check_content("Total Customer Visits: 1")
+    check_content("Total Customer Visits: 1",
+                  "$0.00")
     
     click_link "0"
     
@@ -66,27 +66,94 @@ class CreateVisitTest < ActionDispatch::IntegrationTest
     check_links("Back to main business page",
                 "Return to customer profile view")
                 
-    assert page.has_field?("Visit notes", with: ""), "Field -- Visit notes with expected data not available."
-
-    #for some reason the date field won't show no matter what I try.   follow up on this.
-    
-    #assert page.has_field?(" Date of visit"), "Field -- Date of visit with expected data not available."
-    #assert_select 'visit_date_of_visit'
+    find_field "Visit notes"
    
-    
+    find_field "visit_date_of_visit"
+   
     assert page.has_no_checked_field?("#{service_one.name}"), "Field -- #{service_one.name} is checked but should not be."
                 
     assert page.has_no_checked_field?("#{service_two.name}"), "Field -- #{service_two.name} is checked but should not be."
     
+    fill_in "Visit notes", with: "This may actually work."
+    
+    fill_in "visit_date_of_visit", with: "02/01/2015"
     
     check service_one.name
     
-    fill_in_date_stuff
+    click_button "Create Visit"
+    
+    assert_equal owner_business_path(owner, business), current_path, "Expected to be at main business profile page but at #{current_path}."
+    
+    #assure new content is visible
+    check_content("Visit added for #{customer1.name}",
+                  "Total Customer Visits: 2",
+                  "$125.00")
+
+    assert page.has_link?("1", count: 2), "Link - 1 should exist twice but does not."
+    
+    #created.  will check all locations for this visit in the show_visit_test.rb
+    
+  end
+  
+  test "create visit with two services from main business page" do
+    click_link "0"
+    
+    fill_in "Visit notes", with: "Whatever bro."
+    
+    fill_in "visit_date_of_visit", with: "02/03/2015"
+    
+    check service_one.name
+    check service_two.name
     
     click_button "Create Visit"
     
-
+    assert page.has_content?("$200.00", count: 2), "Content - $200.00 should exist twice but does not."
     
+  end
+  
+  test "fail to create a visit by not filling in both required fields" do
+    #date of visit and services are required.
+    
+    click_link "0"
+    
+    click_button "Create Visit"
+    
+    check_content("Please review the problems below:")
+    
+    assert page.has_content?("can't be blank", count: 2), "Content -- can't be blank should exist twice but does not."
+    
+  end
+  
+  test "fail to create a visit by not filling in date required field" do
+    click_link "0"
+    
+    check service_one.name 
+    
+    click_button "Create Visit"
+    
+    check_content("Please review the problems below:",
+                  "can't be blank")
+                  
+  end
+  
+  test "fail to create a visit by not checking service for visit" do
+   click_link "0"
+   
+   fill_in "visit_date_of_visit", with: "02/01/2015"
+   
+   click_button "Create Visit"
+    
+   check_content("Please review the problems below:",
+                 "can't be blank")
+                  
+  end
+  
+  test "confirm you get to new visit page through customer show page" do
+    click_link "David"
+    
+    click_link "New visit for #{customer1.name}"
+    
+    assert_equal new_customer_visit_path(customer1), current_path, "Expected to be at new visit form for David but at #Pcurrent_path}."
   end
 
 

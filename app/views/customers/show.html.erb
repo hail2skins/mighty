@@ -61,7 +61,7 @@
                       </tr>
                       <tr>
                         <td>Amount Spent:</td>
-                        <td><%= number_to_currency(@customer.appointments.sum :amount) %></td>
+                        <td><%= total_customer_spend(@customer) %></td>
 
 
                       </tr>                    
