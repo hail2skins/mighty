@@ -19,7 +19,7 @@
     
     <%= f.simple_fields_for :comp do |comp| %>
       <%= comp.input :active, as: :boolean, default: false, label: "Check this ONLY if you wish to give a discount" %>
-      <%= comp.input :amount_comp, label: "Total charged for this visit?", placeholder: "Only fill this in with the amount if you selected checked the box" %>
+      <%= comp.input :amount_comp, label: "Total charged for this visit?", placeholder: "Only fill this with the total amount you charged for this visit if you checked above." %>
     <% end %>
     
     

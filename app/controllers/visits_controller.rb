@@ -105,8 +105,10 @@ class VisitsController < ApplicationController
           @comp.destroy
         elsif !@comp.amount_comp
           @comp.destroy
+          flash[:alert] = "You checked the box but did not enter the total visit amount.  No discount created on this visit."
         elsif @comp.amount_comp > before_discount
           @comp.destroy
+          flash[:alert] = "You entered more for the discount than the visit cost.   No discounted created."
         else
           new_amount_comp = before_discount - @comp.amount_comp
           @comp.update(amount_comp: new_amount_comp, date_comp: @visit.date_of_visit, business_id: @business.id, customer_id: @customer.id)
