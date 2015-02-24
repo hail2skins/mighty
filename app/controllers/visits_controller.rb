@@ -52,7 +52,6 @@ class VisitsController < ApplicationController
   end
   
 
-
   private
 
       def set_visit
