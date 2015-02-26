@@ -1,8 +1,7 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
   before_action :set_visit, only: [ :show, :edit, :update, :destroy ]
-  #after_action :update_appointment_amount, only: [ :create, :update ]
-  after_action :comp_visit, only: [ :create, :update ]
+  after_action :comp_visit, only: [ :create ]
 
   def index
     @visits = @customer.visits.all
@@ -39,7 +38,7 @@ class VisitsController < ApplicationController
         
         format.html { redirect_to [@owner, @business], notice: "Visit successfully edited." }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'edit' }
       end
     end
   end
