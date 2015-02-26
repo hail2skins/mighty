@@ -4,6 +4,7 @@
 rose_second_visit:
   date_comp: <%= Time.now %>
   amount_comp: 100
+  active: true
   business: business
   visit: second_visit_rose
   customer: rose
@@ -11,6 +12,7 @@ rose_second_visit:
 kathy_first_visit:
   date_comp: <%= Time.now %>
   amount_comp: 50
+  active: true
   business: business
   visit: first_visit_kathy
   customer: kathy
@@ -18,6 +20,7 @@ kathy_first_visit:
 kathy_second_visit:
   date_comp: <%= Time.now %>
   amount_comp: 75
+  active: true
   business: business
   visit: second_visit_kathy
   customer: kathy

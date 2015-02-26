@@ -1,7 +1,7 @@
 class VisitsController < ApplicationController
   before_action :get_customer_business_and_owner
   before_action :set_visit, only: [ :show, :edit, :update, :destroy ]
-  after_action :comp_visit, only: [ :create ]
+  after_action :comp_visit, only: [ :create, :update ]
 
   def index
     @visits = @customer.visits.all
@@ -30,11 +30,14 @@ class VisitsController < ApplicationController
   end
   
   def edit
+    @visit.build_comp if !@visit.comp
   end
 
   def update
     respond_to do |format|
       if @visit.update(visit_params)
+        find_active_deal
+        update_appointment_amount
         
         format.html { redirect_to [@owner, @business], notice: "Visit successfully edited." }
       else
