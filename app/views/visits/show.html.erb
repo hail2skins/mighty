@@ -26,6 +26,19 @@
                   <% end %>
                 </td>
               </tr>
+              <% if @visit.comp %>
+                <tr>
+                  <td>Normal Total:</td>
+                  <td><%= number_to_currency(@visit.appointments.sum(:amount)) %></td>
+                </tr>
+                <tr>
+                  <td>Discount Amount:</td>
+                  <td><%= number_to_currency(@visit.comp.amount_comp) %></td>
+                </tr>
+                
+              <% end %>
+              
+              
               <tr>
                 <td>Visit Amount:</td>
                 <td><%= number_to_currency(visit_amount) %></td>

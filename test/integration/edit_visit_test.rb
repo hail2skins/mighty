@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CompShowTest < ActionDispatch::IntegrationTest
+class EditVisitTest < ActionDispatch::IntegrationTest
   def test_sanity
     flunk "Need real tests"
   end

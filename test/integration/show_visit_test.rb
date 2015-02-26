@@ -66,6 +66,9 @@ class ShowVisitTest < ActionDispatch::IntegrationTest
     check_links "Return to customer profile page",
                 "Return to main business page"
     
+    #Art has no comps and won't.   So assure he doesn't see the comp related content
+    refute page.has_content?("Normal Total"), "Refute Content -- Normal Total should not exist but does."
+    refute page.has_content?("Discount Amount"), "Refute Content -- Discount Amount should not exist but does."
                   
   end
 

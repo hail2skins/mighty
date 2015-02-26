@@ -60,6 +60,10 @@
 
                       </tr>
                       <tr>
+                        <td>Total Amount Discounted:</td>
+                        <td><%= link_to number_to_currency(@customer.comps.sum(:amount_comp)), customer_comps_path(@customer) %></td>
+                      </tr>
+                      <tr>
                         <td>Amount Spent:</td>
                         <td><%= total_customer_spend(@customer) %></td>
 

@@ -1,16 +1,23 @@
 # Read about fixtures at
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-#one:
-#  date_comp: 2015-02-20
-#  amount_comp: 9.99
-#  business: 
-#  visit: 
-#  customer: 
+rose_second_visit:
+  date_comp: <%= Time.now %>
+  amount_comp: 100
+  business: business
+  visit: second_visit_rose
+  customer: rose
 
-#two:
-#  date_comp: 2015-02-20
-#  amount_comp: 9.99
-#  business: 
-#  visit: 
-#  customer: 
+kathy_first_visit:
+  date_comp: <%= Time.now %>
+  amount_comp: 50
+  business: business
+  visit: first_visit_kathy
+  customer: kathy
+  
+kathy_second_visit:
+  date_comp: <%= Time.now %>
+  amount_comp: 75
+  business: business
+  visit: second_visit_kathy
+  customer: kathy
