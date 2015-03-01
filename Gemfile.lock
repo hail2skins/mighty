@@ -55,6 +55,9 @@ GEM
       will_paginate
     bootstrap_form (2.2.0)
     builder (3.2.2)
+    bullet (4.14.4)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
     cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -135,6 +138,10 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    lol_dba (1.6.4)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      railties (>= 3.0)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
@@ -183,6 +190,8 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -228,6 +237,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    ransack (1.6.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -283,6 +298,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.7.0)
     warden (1.2.3)
       rack (>= 1.0)
     web-console (2.0.0.beta4)
@@ -309,6 +325,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
   bootstrap_form
+  bullet
   bundler
   cancancan (~> 1.7)
   capybara-webkit
@@ -322,6 +339,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 2.2.3)
   jquery-rails
+  lol_dba
   minitest-rails-capybara
   minitest-reporters
   newrelic_rpm
@@ -331,6 +349,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 4.2)
   rails_12factor
+  ransack
   sass-rails
   sdoc (~> 0.4.0)
   selenium-webdriver
