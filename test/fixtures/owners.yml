@@ -14,10 +14,13 @@ owner:
   admin: false
   confirmed_at: <%= Time.now %>
 
-  
-#two: {}
-#  column: value
-
+login_owner:
+  first_name: 'Login'
+  last_name: 'Owner'
+  email: 'login@owner.com'
+  encrypted_password: <%= Devise.bcrypt(Owner, 'password') %>
+  admin: false
+  confirmed_at: <%= Time.now %>
 
 
 
