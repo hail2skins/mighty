@@ -108,4 +108,4 @@ gem 'web-console', '2.0.0.beta4', group: [ :development, :test ]
 
 gem 'rack-mini-profiler'
 
-ruby "2.1.4"
+ruby "2.2.1"
