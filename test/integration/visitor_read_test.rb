@@ -58,4 +58,42 @@ class VisitorReadTest < ActionDispatch::IntegrationTest
   end
   
 
+  test "checking the Signup link" do
+  
+    visit signup_path
+    
+    assert_field "Email"
+    assert_field "Password"
+    assert_field "Confirm Password"
+    assert_field "First name"
+    assert_field "Middle name"
+    assert_field "Last name"
+    assert_button "Create my account"
+    
+    check_links "Login",
+                "Didn't receive confirmation instructions?",
+                "Didn't receive unlock instructions?"
+                
+    assert_title "Sign up"
+    check_content "Sign up"
+  end
+  
+  test "checking the Login link" do
+    click_link "Login"
+    
+    assert_equal(login_path, current_path)
+    assert_field "Email"
+    assert_field "Password"
+    find(:checkbox, "Remember me")
+    assert_button "Login"
+    
+    check_links "Sign up",
+                "Forgot your password?",
+                "Didn't receive confirmation instructions?",
+                "Didn't receive unlock instructions?"
+                
+    assert_title "Login"
+    check_content "Login"
+  end
+
 end
