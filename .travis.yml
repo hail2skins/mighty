@@ -5,3 +5,5 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - psql -c 'create database mightysmalls_test;' -U postgres
+before_script:
+  - bundle exec db:migrate RAILS_ENV=test
