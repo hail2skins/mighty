@@ -9,7 +9,7 @@
         <b>Business: </b>
         <%= link_to @business.name, edit_owner_business_path(@owner, @business) %><br />
         <% if @business.packages.count == 0 %>
-          <%= link_to "Add new package", new_business_package_path(@business) %>
+          <%= link_to "Add new package", new_business_package_path(@business) %><br />
         <% else %>
           <%= link_to "Packages - " + @business.packages.count.to_s, business_packages_path(@business) %><br />
         <% end %>
@@ -17,6 +17,7 @@
       <p><br>
         <%= link_to "Delete", [@owner, @business], data: { :confirm => "Are you sure?" }, method: :delete, class: 'pull-right' %>
      </div>
+  
      
      <% if @business.services.count == 0 %>
      <div class="panel panel-danger">
