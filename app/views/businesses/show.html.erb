@@ -2,10 +2,10 @@
 <div class="row">
 	<div class="col-md-2">
   	<div class="panel panel-success">
+  	  <div class="business">
     	<div class="panel-heading">
-    	  <div class="business">
-      	  <b>Business Information</b><%= link_to "Edit", edit_owner_business_path(@owner, @business), class: 'pull-right' %>
-        </div>
+    	   <b>Business Information</b><%= link_to "Edit", edit_owner_business_path(@owner, @business), class: 'pull-right' %>
+        
       </div>
       <div class="panel-body">
         <b>Business: </b>
@@ -18,6 +18,8 @@
         <%= link_to "Gift Certificates", gift_certificates_business_path(@business) %>
       <p><br>
         <%= link_to "Delete", [@owner, @business], data: { :confirm => "Are you sure?" }, method: :delete, class: 'pull-right' %>
+     
+     </div>
      </div>
   
      
