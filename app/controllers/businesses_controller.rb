@@ -39,7 +39,7 @@ class BusinessesController < ApplicationController
 	def update
   	respond_to do |format|
   		if @business.update(business_params)
-  			format.html { redirect_to @owner, notice: "Your business information has been successfully updated." }
+  			format.html { redirect_to owner_business_path(current_owner, @business), notice: "Your business information has been successfully updated." }
 			else
 				format.html { render action: 'edit' }
 			end

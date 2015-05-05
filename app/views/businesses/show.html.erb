@@ -3,7 +3,9 @@
 	<div class="col-md-2">
   	<div class="panel panel-success">
     	<div class="panel-heading">
-      	<b>Business Information</b><%= link_to "Edit", edit_owner_business_path(@owner, @business), class: 'pull-right' %>
+    	  <div class="business">
+      	  <b>Business Information</b><%= link_to "Edit", edit_owner_business_path(@owner, @business), class: 'pull-right' %>
+        </div>
       </div>
       <div class="panel-body">
         <b>Business: </b>
