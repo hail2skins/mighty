@@ -34,6 +34,7 @@
        </div>
      </div>
      <% else %>
+     <div class="services">
      <div class='panel panel-success'>
        <div class="panel-heading">
          <b>Services Information</b><%= link_to "Add", new_business_service_path(@business), class: 'pull-right' %>
@@ -41,6 +42,7 @@
        <div class="panel-body">
          <%= link_to "Number of services:", business_services_path(@business) %> <%= link_to @business.services.count, '#' %>
        </div>
+     </div>
      </div>
      <% end %>
 

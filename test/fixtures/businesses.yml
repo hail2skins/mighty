@@ -10,3 +10,8 @@ business:
   name: "Awesome Business"
   description: "This business is awesome."
   owner: owner
+  
+service_test_business:
+  name: "Service Test Business"
+  description: "Business to test creation of services."
+  owner: service_test_owner
