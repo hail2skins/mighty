@@ -15,5 +15,5 @@ price_microderm:
   cost: microderm (Service)
   
 price_facial:
-  amount: 75.99
+  amount: 75
   cost: facial (Service)

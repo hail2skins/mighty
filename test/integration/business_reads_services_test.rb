@@ -23,7 +23,7 @@ class BusinessReadsServicesTest < ActionDispatch::IntegrationTest
                   "Service name",
                   "Price",
                   "$125.00",
-                  "$75.99"
+                  "$75.00"
                   
     check_links "Microderm",
                 "Facial",
