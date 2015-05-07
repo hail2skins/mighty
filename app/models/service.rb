@@ -21,4 +21,11 @@ class Service < ActiveRecord::Base
   has_many :visits, through: :appointments
   
   validates_presence_of :name
+  
+  before_save :titleize_name
+  
+  private
+    def titleize_name
+      self.name = name.titleize
+    end
 end

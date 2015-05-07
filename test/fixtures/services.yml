@@ -7,12 +7,12 @@
 #
 microderm: 
 # column: value
-  name: 'microderm'
+  name: 'Microderm'
   description: 'Making a pretty face'
   business: business
 
 facial:
-  name: 'facial'
+  name: 'Facial'
   description: 'This is pretty too.'
   business: business
 
