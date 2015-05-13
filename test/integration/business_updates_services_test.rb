@@ -1,7 +1,12 @@
 require "test_helper"
 
 class BusinessUpdatesServicesTest < ActionDispatch::IntegrationTest
-  def test_sanity
-    flunk "Need real tests"
+  def setup
+    login
   end
+  
+  def teardown
+    click_link "Logout"
+  end
+  
 end
