@@ -13,6 +13,12 @@ class BusinessUpdatesServicesTest < ActionDispatch::IntegrationTest
     click_link "Number of services:"
     click_link "Microderm"
     check_links "Edit this service"
+    click_link "Edit this service"
+    
+    assert_equal edit_business_service_path(business, service_one), current_path
+    assert_field "Service name"
+    assert_field "Description"
+    assert_field "Price"
     
   end
   
