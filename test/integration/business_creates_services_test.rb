@@ -47,9 +47,9 @@ class BusinessCreatesServicesTest < ActionDispatch::IntegrationTest
     fill_in "Price", with: ""
     click_button "Create Service"
     
-    check_content "2 errors prohibited this visit from being saved:",
-                  "Prices amount can't be blank"
-                  "Name can't be blank"
+  check_content "Please review the problems below:",
+                "Name can't be blank",
+                "Amount can't be blank"
  end
  
  test "create another service" do
