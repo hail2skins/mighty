@@ -40,7 +40,7 @@ class ServicesController < ApplicationController
   end
   
   def destroy
-    @service.destroy
+    @service.delete
     respond_to do |format|
       format.html { redirect_to [@business, @customer], notice: 'Service deleted.' }
     end  
