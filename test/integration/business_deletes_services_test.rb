@@ -14,7 +14,7 @@ class BusinessDeletesServicesTest < ActionDispatch::IntegrationTest
     click_link "Microderm"
     click_link "Delete this service"
     
-    assert_equal owner_business_path(owner, business), current_path
+    assert_equal business_path(business), current_path
     refute page.has_content?("Number of services: 2"), "There are still two services."
     click_link "Number of services:"
     refute page.has_content?("Microderm"), "The Microderm service isn't deleted."

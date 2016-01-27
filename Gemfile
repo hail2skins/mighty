@@ -56,6 +56,7 @@ gem 'selenium-webdriver', group: [:development, :test]
 gem 'poltergeist', group: [:development, :test]
 gem 'minitest-rails-capybara', group: [ :development, :test ]
 gem 'minitest-reporters', group: [ :development, :test ]
+gem 'guard', group: [ :development, :test ]
 gem 'guard-minitest', group: [ :development, :test ]
 
 #gem 'database_cleaner', group: :test
@@ -74,7 +75,7 @@ gem 'annotate', group: :development
 
 gem 'simple_form'
 
-gem 'jquery-datatables-rails', '~> 2.2.3'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 
 gem 'bundler'
 
@@ -102,10 +103,10 @@ gem 'font-awesome-rails'
 
 gem 'cancancan', '~> 1.7'
 
-gem 'paranoia', '~> 2.0'
+gem 'paranoia'
 
 gem 'web-console', '2.0.0.beta4', group: [ :development, :test ]
 
 gem 'rack-mini-profiler'
 
-ruby "2.2.1"
+ruby "2.2.4"

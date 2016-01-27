@@ -41,7 +41,7 @@ owner:
   first_name: 'Testy'
   last_name: 'McTesterton'
   email: 'test@test.com'
-  encrypted_password: <%= Devise.bcrypt(Owner, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(Owner, 'password') %>
   admin: false
   confirmed_at: <%= Time.now %>
 
@@ -49,7 +49,7 @@ login_owner:
   first_name: 'Login'
   last_name: 'Owner'
   email: 'login@owner.com'
-  encrypted_password: <%= Devise.bcrypt(Owner, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(Owner, 'password') %>
   admin: false
   confirmed_at: <%= Time.now %>
 
@@ -57,7 +57,7 @@ service_test_owner:
   first_name: 'Service'
   last_name: 'Test'
   email: 'service@owner.com'
-  encrypted_password: <%= Devise.bcrypt(Owner, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(Owner, 'password') %>
   admin: false
   confirmed_at: <%= Time.now %>
 

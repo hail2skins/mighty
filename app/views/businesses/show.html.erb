@@ -23,7 +23,7 @@
      </div>
   
      
-     <% if @business.services.count == 0 %>
+     <% if @business.services.not_deleted.count == 0 %>
      <div class="panel panel-danger">
        <div class="panel-heading">
          <b>Services Information</b><%= link_to "Add", new_business_service_path(@business), class: 'pull-right' %>
